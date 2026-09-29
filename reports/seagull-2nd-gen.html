@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第二代海鸥（闪充鸥）上新解读 · 对你的影响</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a20; --panel2:#1c2029; --line:#272c36;
+    --text:#e6e8ec; --muted:#98a2b3; --dim:#6f7987;
+    --blue:#4ea8ff; --amber:#ffb020; --green:#3ddc97; --red:#ff5c5c; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased; padding:48px 24px 96px;}
+  .wrap{max-width:1000px; margin:0 auto;}
+  .kicker{font-size:12px; letter-spacing:.18em; color:var(--purple); text-transform:uppercase; font-weight:600;}
+  h1{font-size:33px; line-height:1.3; margin:10px 0 8px; letter-spacing:-.01em; font-weight:700;}
+  .sub{color:var(--muted); font-size:14px;}
+  .meta{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 12px; background:var(--panel);}
+
+  section{margin-top:52px;}
+  h2{font-size:20px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  h2 .num{display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; font-size:13px; font-weight:700; background:rgba(167,139,250,.15); color:var(--purple); flex:none;}
+  h3{font-size:15px; font-weight:650; margin:26px 0 10px; color:#cfd6e0;}
+  p{color:#c3cad6; font-size:14.5px;}
+  .lead{color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+
+  .hero{margin-top:28px; background:linear-gradient(135deg,rgba(255,176,32,.11),rgba(167,139,250,.06)); border:1px solid rgba(255,176,32,.30); border-radius:16px; padding:26px 28px;}
+  .hero .big{font-size:22px; font-weight:700; line-height:1.5; letter-spacing:-.01em;}
+  .hero .big em{font-style:normal; color:var(--amber);}
+  .hero p{margin-top:12px; font-size:14px; color:#b9c1cd;}
+
+  .warn{margin-top:20px; background:rgba(255,92,92,.08); border:1px solid rgba(255,92,92,.32); border-left:3px solid var(--red); border-radius:10px; padding:16px 20px;}
+  .warn .t{font-weight:700; color:#ff8a8a; font-size:14px; margin-bottom:6px;}
+  .warn p{font-size:13.5px; color:#d5c3c3;}
+
+  .ok{margin-top:20px; background:rgba(61,220,151,.07); border:1px solid rgba(61,220,151,.28); border-left:3px solid var(--green); border-radius:10px; padding:16px 20px;}
+  .ok .t{font-weight:700; color:#6ee7b7; font-size:14px; margin-bottom:6px;}
+  .ok p{font-size:13.5px; color:#c2d8cd;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .card .k{font-size:12px; color:var(--dim); letter-spacing:.04em;}
+  .card .v{font-size:22px; font-weight:700; margin-top:6px; letter-spacing:-.02em;}
+  .card .v small{font-size:13px; font-weight:500; color:var(--muted);}
+  .card .n{font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.6;}
+  .card.hl{border-color:rgba(255,176,32,.4); background:linear-gradient(180deg,rgba(255,176,32,.06),rgba(23,26,32,1));}
+  .card.hl .v{color:var(--amber);}
+  .card.bad{border-color:rgba(255,92,92,.35);}
+  .card.bad .v{color:#ff8a8a;}
+
+  .tblwrap{margin-top:16px; overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel);}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:620px;}
+  th{text-align:left; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:.05em; padding:13px 16px; border-bottom:1px solid var(--line); background:var(--panel2); white-space:nowrap;}
+  td{padding:12px 16px; border-bottom:1px solid rgba(39,44,54,.7); color:#c9d0da; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:rgba(78,168,255,.045);}
+  td.name{color:#eef1f5; font-weight:600; white-space:nowrap;}
+  .yes{color:var(--green); font-weight:600;}
+  .no{color:#ff8a8a; font-weight:600;}
+  .pill{display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; font-weight:600; white-space:nowrap;}
+  .pill.rec{background:rgba(255,176,32,.15); color:var(--amber);}
+  .pill.keep{background:rgba(61,220,151,.13); color:var(--green);}
+  .pill.warn2{background:rgba(255,92,92,.13); color:#ff8a8a;}
+  .pill.info{background:rgba(78,168,255,.13); color:var(--blue);}
+  .pill.mute{background:rgba(152,162,179,.12); color:var(--muted);}
+  .up{color:var(--green); font-weight:600;}
+  .dn{color:#ff8a8a; font-weight:600;}
+
+  /* timeline */
+  .tl{margin-top:20px; position:relative; padding-left:28px;}
+  .tl::before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .tl .ev{position:relative; padding:0 0 18px 0; font-size:13.5px; color:#c3cad6;}
+  .tl .ev::before{content:""; position:absolute; left:-26px; top:7px; width:9px; height:9px; border-radius:50%; background:var(--panel2); border:2px solid var(--purple);}
+  .tl .ev.hot::before{background:var(--amber); border-color:var(--amber); box-shadow:0 0 0 4px rgba(255,176,32,.15);}
+  .tl .d{color:var(--dim); font-size:12px; display:block;}
+
+  .bars{margin-top:20px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 24px 14px;}
+  .barrow{display:grid; grid-template-columns:150px 1fr 96px; align-items:center; gap:12px; padding:7px 0;}
+  .barrow .lbl{font-size:13px; color:#c9d0da; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .barrow .lbl.base{color:var(--dim);}
+  .track{height:16px; background:rgba(255,255,255,.045); border-radius:5px; overflow:hidden;}
+  .fill{height:100%; border-radius:5px; background:linear-gradient(90deg,#3d7fd6,#4ea8ff);}
+  .fill.base{background:linear-gradient(90deg,#4a5260,#6b7484);}
+  .fill.amber{background:linear-gradient(90deg,#d98b12,#ffb020);}
+  .fill.green{background:linear-gradient(90deg,#22a06b,#3ddc97);}
+  .fill.purple{background:linear-gradient(90deg,#7c5ce0,#a78bfa);}
+  .barrow .val{font-size:12.5px; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums;}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--dim);}
+  .legend i{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:6px; vertical-align:middle;}
+
+  .calc{margin-top:16px; border-top:1px dashed var(--line); padding-top:14px;}
+  .calc .line{display:flex; justify-content:space-between; font-size:13.5px; padding:4px 0; color:#c3cad6;}
+  .calc .line span:last-child{font-variant-numeric:tabular-nums; color:#e6e8ec;}
+  .calc .line.total{border-top:1px solid var(--line); margin-top:8px; padding-top:10px; font-weight:700; font-size:15px;}
+  .calc .line.total span:last-child{color:var(--amber);}
+
+  .plan{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin-top:16px;}
+  .plan.win{border-color:rgba(61,220,151,.4); background:linear-gradient(180deg,rgba(61,220,151,.05),rgba(23,26,32,1) 45%);}
+  .plan.lose{border-color:rgba(255,92,92,.3);}
+  .plan h4{font-size:15.5px; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .plan .p{font-size:13px; color:var(--muted); margin-top:6px;}
+
+  footer{margin-top:64px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim); line-height:1.9;}
+  footer b{color:var(--muted);}
+  @media (max-width:640px){
+    body{padding:32px 16px 72px;}
+    h1{font-size:23px;}
+    .hero .big{font-size:18px;}
+    .barrow{grid-template-columns:98px 1fr 76px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">新车上新解读 · 2026年9月</div>
+  <h1>第二代海鸥"闪充鸥"要来了，你该怎么说</h1>
+  <p class="sub">结论：产品力确实强，但<strong>它长大到 4.2 米了</strong>——对你的"不能太大"是硬伤</p>
+  <div class="meta">
+    <span class="tag">2026-09-29</span>
+    <span class="tag">已官宣 · 工信部已申报</span>
+    <span class="tag">预计 10 月上市</span>
+  </div>
+
+  <div class="hero">
+    <div class="big">二代海鸥车长 <em>4205mm</em>，比你现在的科莱威长 <em>1.07 米</em>，比现款海鸥还长 42.5 厘米，<b>已经从 A00 级跨进 A0 级</b>。</div>
+    <p>换句话说：<b>它不再是一台"小海鸥"了</b>，尺寸跟缤果 Pro（4050mm）一个量级。<br>
+       如果你要买海鸥，<b>现款还在卖、也在促销</b>——现款 3.78 米才是符合你尺寸要求的那个。但要注意：网上传的"3.53 万清仓"<b>是谣言</b>，真实优惠是几千元级别。</p>
+  </div>
+
+  <!-- 1 官宣信息 -->
+  <section>
+    <h2><span class="num">1</span>官方已经确认了什么</h2>
+    <p class="lead">不是传闻，是比亚迪集团副总裁何志奇 9 月 23 日亲自官宣，工信部也已申报完成。</p>
+
+    <div class="tl">
+      <div class="ev"><span class="d">2026-07-10</span>工信部第 409 批申报公示，尺寸参数曝光：车长 4205mm、轴距 2650mm</div>
+      <div class="ev"><span class="d">2026-09-09</span>第 411 批申报，换装新电机（95kW 后置）</div>
+      <div class="ev"><span class="d">2026-09-22</span>官方发布设计草图</div>
+      <div class="ev hot"><span class="d">2026-09-23</span><b>比亚迪集团副总裁何志奇官宣亮相，官方代号"闪充鸥"</b></div>
+      <div class="ev"><span class="d">2026-09-26</span>实车正式亮相</div>
+      <div class="ev hot"><span class="d">预计 2026 年 10 月</span><b>上市（官方口径"年内"，多方消息指向 10 月上旬）</b></div>
+    </div>
+  </section>
+
+  <!-- 2 参数对比 -->
+  <section>
+    <h2><span class="num">2</span>现款 vs 第二代：变了什么</h2>
+    <p class="lead">数据来自工信部申报信息和官方发布。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>项目</th><th>现款（2026 款）</th><th>第二代（闪充鸥）</th><th>变化</th></tr></thead>
+        <tbody>
+          <tr><td class="name">车长</td><td>3780 mm</td><td><b>4205 mm</b></td><td><span class="dn">+425 mm</span></td></tr>
+          <tr><td class="name">车宽 / 车高</td><td>1715 / 1540 mm</td><td>1810 / 1570 mm</td><td>+95 / +30 mm</td></tr>
+          <tr><td class="name">轴距</td><td>2500 mm</td><td><b>2650 mm</b></td><td><span class="dn">+150 mm</span></td></tr>
+          <tr><td class="name">级别</td><td>A00 级</td><td>A0 级（接近海豚）</td><td>跨级</td></tr>
+          <tr><td class="name">座位</td><td>4 座</td><td><b>5 座</b></td><td><span class="yes">+1 座</span></td></tr>
+          <tr><td class="name">电机</td><td>前置 55 kW</td><td><b>后置 95 kW</b></td><td><span class="yes">功率 +73%</span></td></tr>
+          <tr><td class="name">最高车速</td><td>约 130 km/h</td><td>150 km/h</td><td>提升</td></tr>
+          <tr><td class="name">CLTC 续航</td><td>305 / 405 km</td><td>320 / 420 km</td><td>小幅提升</td></tr>
+          <tr><td class="name">电池</td><td>一代刀片电池</td><td><b>二代刀片电池 + 闪充</b></td><td><span class="yes">充电倍率 10C</span></td></tr>
+          <tr><td class="name">智驾</td><td>天神之眼 C</td><td>可选装<b>激光雷达</b> + 天神之眼 B</td><td><span class="yes">支持城市领航</span></td></tr>
+          <tr><td class="name">前备厢</td><td>无</td><td>有（改后置电机腾出空间）</td><td>新增</td></tr>
+          <tr><td class="name">指导价</td><td>6.99–8.59 万</td><td><b>未公布</b></td><td><span class="dn">大概率上浮</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3 尺寸 -->
+  <section>
+    <h2><span class="num">3</span>关键：它已经不小了</h2>
+    <p class="lead">把这台新车放回你最初的需求里看——"新车不能太大"。</p>
+
+    <div class="bars">
+      <div class="barrow">
+        <div class="lbl base">科莱威 CLEVER（你现在）</div>
+        <div class="track"><div class="fill base" style="width:74.7%"></div></div>
+        <div class="val">3140 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">宏光MINIEV 第五代</div>
+        <div class="track"><div class="fill green" style="width:77.7%"></div></div>
+        <div class="val">3268 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">长安 Lumin</div>
+        <div class="track"><div class="fill green" style="width:78.3%"></div></div>
+        <div class="val">3293 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">现款海鸥（2026 款）</div>
+        <div class="track"><div class="fill" style="width:89.9%"></div></div>
+        <div class="val">3780 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">缤果 Pro</div>
+        <div class="track"><div class="fill amber" style="width:96.3%"></div></div>
+        <div class="val">4050 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">第二代海鸥（闪充鸥）</div>
+        <div class="track"><div class="fill purple" style="width:100%"></div></div>
+        <div class="val">4205 mm</div>
+      </div>
+      <div class="legend">
+        <span><i style="background:#6b7484"></i>你现在的位置</span>
+        <span><i style="background:#3ddc97"></i>≤3.3m · 与现车同级</span>
+        <span><i style="background:#4ea8ff"></i>3.78m · 现款海鸥</span>
+        <span><i style="background:#a78bfa"></i>≥4.0m · 已明显变大</span>
+      </div>
+    </div>
+
+    <div class="warn">
+      <div class="t">⚠️ 第二代海鸥比你的科莱威长 1.07 米</div>
+      <p>你最初的要求是"新车不能太大"。现款海鸥（3.78 米）已经算是个平衡点，而<b>第二代直接把这条线推到了 4.2 米</b>——和缤果 Pro、埃安 UT 是同一个量级了。如果"不能太大"是硬约束（比如窄车位），<b>新一代海鸥可以直接排除</b>。</p>
+    </div>
+  </section>
+
+  <!-- 4 价格 -->
+  <section>
+    <h2><span class="num">4</span>价格：到底有没有清库？有，但不是"腰斩"</h2>
+
+    <div class="warn">
+      <div class="t">⚠️ 先辟谣：网传"海鸥 3.53 万清仓"是假消息</div>
+      <p>这个说法最早出现在微博，<b>配图模糊、没有经销商公章，官方和经销商都没有证实</b>。而且 3.53 万低于成本线——光一块磷酸铁锂电池的成本就超过 2 万元。2026-09-29 已有媒体明确辟谣。<b>官方起售价仍是 6.99 万元。</b>看到"3.53 万提车"的广告基本是引流话术，到店后会附加"需贷款、置换、保险"等条件。</p>
+    </div>
+
+    <h3>真实的优惠长这样（经销商公开报价）</h3>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>地区 / 门店</th><th>车型</th><th>指导价</th><th>优惠</th><th>优惠后</th></tr></thead>
+        <tbody>
+          <tr><td class="name">武汉中成汉迪店<br><span style="font-weight:400;font-size:12px;color:var(--dim)">2026-09-29 更新</span></td><td>海鸥（部分车型）</td><td>—</td><td><b>9,000 元</b></td><td>—</td></tr>
+          <tr><td class="name">广州嘉易兴 4S 店</td><td>2025款 智驾版 305KM 活力版</td><td>6.98 万</td><td><b>9,000 元</b></td><td>6.08 万</td></tr>
+          <tr><td class="name">广州嘉易兴 4S 店</td><td>2025款 智驾版 405KM 飞翔版</td><td>8.58 万</td><td>9,000 元</td><td>7.68 万</td></tr>
+          <tr><td class="name">天津中泰信浩</td><td>2026款 305KM 活力版</td><td>6.99 万</td><td>6,000 元</td><td>6.39 万</td></tr>
+          <tr><td class="name">武汉鄂迪 4S 店</td><td>海鸥（部分车型）</td><td>—</td><td>6,000 元</td><td>—</td></tr>
+          <tr><td class="name">广州嘉易兴 4S 店</td><td>2026款 305KM 活力版</td><td>6.99 万</td><td>3,000 元</td><td>6.69 万</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cards" style="margin-top:20px">
+      <div class="card hl">
+        <div class="k">武汉终端最高优惠</div>
+        <div class="v">0.9 <small>万</small></div>
+        <div class="n">武汉海鸥报价区间 6.08–7.99 万，最高优惠 0.9 万</div>
+      </div>
+      <div class="card">
+        <div class="k">2026 款常规优惠</div>
+        <div class="v">0.3–0.6 <small>万</small></div>
+        <div class="n">天津 6,000 / 武汉鄂迪 6,000 / 广州 3,000</div>
+      </div>
+      <div class="card">
+        <div class="k">比亚迪厂家置换补贴</div>
+        <div class="v">0.3–0.4 <small>万</small></div>
+        <div class="n">保底 3,000 元，至高 4,000 元</div>
+      </div>
+      <div class="card bad">
+        <div class="k">第二代 · 预测起售价</div>
+        <div class="v">7.28–7.58 <small>万</small></div>
+        <div class="n">尺寸、动力、智驾全面升级，上市初期无优惠</div>
+      </div>
+    </div>
+
+    <div class="ok" style="margin-top:20px">
+      <div class="t">✓ 所以"清库"到底真不真？——真，但力度是"几千元"级别</div>
+      <p>优惠最大的是 <b>2025 款智驾版（9,000 元）</b>，这是老款清库的典型特征；2026 款只有 3,000–6,000 元的常规促销。<br>
+         <b>真正的换代清库力度，要等第二代正式上市前后（10 月）才可能出现。</b>现在属于"换代前的常规促销期"，不是抄底时刻。<br>
+         另外，<b>比亚迪官方从未明确说老款会停产</b>——"小海鸥要停产"是自媒体的推测，比亚迪历来有新款老款同堂销售的先例。</p>
+    </div>
+
+    <h3>按你的情况算：现款海鸥 305km 活力版（指导价 6.99 万）</h3>
+    <div class="plan win">
+      <div class="calc" style="margin-top:0;border-top:none;padding-top:0">
+        <div class="line"><span>官方指导价</span><span>69,900</span></div>
+        <div class="line"><span>经销商终端优惠（按武汉 6,000 计）</span><span class="up">−6,000</span></div>
+        <div class="line"><span>比亚迪厂家置换补贴（至高 4,000）</span><span class="up">−4,000</span></div>
+        <div class="line"><span>新车开票价</span><span>59,900</span></div>
+        <div class="line"><span>车辆购置税（2026 年减半）</span><span>+2,650</span></div>
+        <div class="line"><span>交强险 + 商业险（首年）</span><span>+3,500</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>政府置换补贴（开票价 8%）</span><span class="up">−4,792</span></div>
+        <div class="line"><span>旧车科莱威卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 41,800 元</span></div>
+      </div>
+      <div class="p" style="margin-top:12px">终端优惠与厂家置换补贴需到店实谈。若拿到 9,000 元优惠（2025 款智驾版），净支出可降到约 3.88 万。</div>
+    </div>
+
+    <div class="ok" style="margin-top:22px">
+      <div class="t">✓ 横向对比：你的三个选项</div>
+      <p>
+        <b>宏光 MINIEV 第五代</b>（3.27 米）净支出约 <b>2.0–2.3 万</b>　·　
+        <b>现款海鸥</b>（3.78 米）净支出约 <b>3.9–4.2 万</b>　·　
+        <b>缤果 Pro</b>（4.05 米）净支出约 <b>3.85 万</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 建议 -->
+  <section>
+    <h2><span class="num">5</span>所以你怎么选</h2>
+
+    <div class="plan win">
+      <h4>方案一：要海鸥 → 买现款，但不必急着今天下单 <span class="pill keep">推荐</span></h4>
+      <div class="p">现款 3.78 米，符合你的尺寸要求。但目前只是<b>常规促销（3,000–9,000 元）</b>，不是抄底时刻——<b>真正的换代清库要等第二代 10 月上市前后</b>。如果你不着急，等到那时候再看，老款优惠可能更大；缺点是库存变少、颜色配置不全。<br>净支出约 <b>3.9–4.2 万</b>。</div>
+    </div>
+
+    <div class="plan lose">
+      <h4>方案二：等第二代 → 不适合你</h4>
+      <div class="p">产品力确实强（95kW、5 座、闪充、可选激光雷达），但车长 4.2 米、起售价预计 7.28–7.58 万，上市初期无优惠。<b>对"不能太大"和"想省钱"两条都是反向的。</b>除非你改变需求、愿意接受一台 4.2 米的车。</div>
+    </div>
+
+    <div class="plan">
+      <h4>方案三：继续按原计划 → 宏光 MINIEV 第五代</h4>
+      <div class="p">如果你最在意的是"尺寸几乎不变 + 花最少的钱"，那宏光 MINIEV 第五代（3.27 米、净支出约 2 万）依然是这三台里最贴合你原始需求的。<b>它比现款海鸥便宜约 2 万，尺寸还更小。</b></div>
+    </div>
+
+    <div class="warn" style="margin-top:22px">
+      <div class="t">⚠️ 别被"清仓价"话术带走</div>
+      <p>现在这个节点，网上关于海鸥的传言特别多（"3.53 万清仓""老款马上停产"），大部分是自媒体推测或引流话术。<b>判断标准很简单：比亚迪官网和 4S 店的书面报价才算数。</b>任何"低于 5 万提车"的说法，基本都附带贷款、置换、店内保险等条件。</p>
+    </div>
+
+    <div class="hero" style="margin-top:24px">
+      <div class="big">一句话：<em>第二代海鸥变大这件事是真的，但"现款在清仓甩卖"被夸大了。</em></div>
+      <p>真实情况是：现款有几千元的常规促销，<b>换代清库还没真正开始</b>。<br>
+         对你的决策影响其实很简单——<b>第二代尺寸超标，直接排除；现款海鸥可以买，但不用抢，等到 10 月前后可能更划算。</b>至于到底买海鸥还是宏光 MINIEV，差别是"多花 2 万换 5 座 + 更好的品牌和保值"，取决于你愿不愿意为这点多付钱。</p>
+    </div>
+  </section>
+
+  <footer>
+    <b>数据来源</b>：汽车之家《全新比亚迪海鸥实车亮相 轴距增加150mm 尺寸暴涨》（2026-09-26）；新浪科技《海鸥长大了！比亚迪第二代海鸥官宣亮相》（2026-09-23）；工信部第 409/411 批新车申报公示；易车《2026款比亚迪海鸥正式上市 售6.99万元起》（2026-05-11）；无敌电动网《2026年9月1日 海鸥全国最新优惠信息汇总》；汽车之家武汉中成汉迪店 / 武汉鄂迪 4S 店经销商报价页；新浪汽车《比亚迪海鸥3.53万清仓？真相来了》（2026-09-29 辟谣）；湖北省商务厅《2026年湖北省汽车以旧换新补贴实施细则》。<br>
+    <b>说明</b>：第二代海鸥的价格与配置以官方上市发布为准，目前均为媒体预测。<b>网传"3.53 万清仓"经核查为不实消息</b>，官方起售价仍为 6.99 万元；本报告列出的终端优惠为经销商公开报价，实际以到店书面报价为准。本报告为决策参考，不构成交易建议。<br>
+    整理时间：2026-09-29
+  </footer>
+
+</div>
+</body>
+</html>

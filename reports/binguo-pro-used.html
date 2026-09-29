@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>缤果Pro 二手车调研 · 真实车源 / 价格倒挂 / 替代方案</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a20; --panel2:#1c2029; --line:#272c36;
+    --text:#e6e8ec; --muted:#98a2b3; --dim:#6f7987;
+    --blue:#4ea8ff; --amber:#ffb020; --green:#3ddc97; --red:#ff5c5c; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased; padding:48px 24px 96px;}
+  .wrap{max-width:1000px; margin:0 auto;}
+  .kicker{font-size:12px; letter-spacing:.18em; color:var(--blue); text-transform:uppercase; font-weight:600;}
+  h1{font-size:33px; line-height:1.3; margin:10px 0 8px; letter-spacing:-.01em; font-weight:700;}
+  .sub{color:var(--muted); font-size:14px;}
+  .meta{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 12px; background:var(--panel);}
+
+  section{margin-top:52px;}
+  h2{font-size:20px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  h2 .num{display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; font-size:13px; font-weight:700; background:rgba(78,168,255,.14); color:var(--blue); flex:none;}
+  h3{font-size:15px; font-weight:650; margin:26px 0 10px; color:#cfd6e0;}
+  p{color:#c3cad6; font-size:14.5px;}
+  .lead{color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+
+  .hero{margin-top:28px; background:linear-gradient(135deg,rgba(255,92,92,.10),rgba(78,168,255,.05)); border:1px solid rgba(255,92,92,.30); border-radius:16px; padding:26px 28px;}
+  .hero.good{background:linear-gradient(135deg,rgba(61,220,151,.09),rgba(78,168,255,.05)); border-color:rgba(61,220,151,.30);}
+  .hero .big{font-size:22px; font-weight:700; line-height:1.5; letter-spacing:-.01em;}
+  .hero .big em{font-style:normal; color:var(--amber);}
+  .hero p{margin-top:12px; font-size:14px; color:#b9c1cd;}
+
+  .warn{margin-top:20px; background:rgba(255,92,92,.08); border:1px solid rgba(255,92,92,.32); border-left:3px solid var(--red); border-radius:10px; padding:16px 20px;}
+  .warn .t{font-weight:700; color:#ff8a8a; font-size:14px; margin-bottom:6px;}
+  .warn p{font-size:13.5px; color:#d5c3c3;}
+
+  .ok{margin-top:20px; background:rgba(61,220,151,.07); border:1px solid rgba(61,220,151,.28); border-left:3px solid var(--green); border-radius:10px; padding:16px 20px;}
+  .ok .t{font-weight:700; color:#6ee7b7; font-size:14px; margin-bottom:6px;}
+  .ok p{font-size:13.5px; color:#c2d8cd;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .card .k{font-size:12px; color:var(--dim); letter-spacing:.04em;}
+  .card .v{font-size:22px; font-weight:700; margin-top:6px; letter-spacing:-.02em;}
+  .card .v small{font-size:13px; font-weight:500; color:var(--muted);}
+  .card .n{font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.6;}
+  .card.hl{border-color:rgba(255,176,32,.4); background:linear-gradient(180deg,rgba(255,176,32,.06),rgba(23,26,32,1));}
+  .card.hl .v{color:var(--amber);}
+  .card.bad{border-color:rgba(255,92,92,.35);}
+  .card.bad .v{color:#ff8a8a;}
+
+  .tblwrap{margin-top:16px; overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel);}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:620px;}
+  th{text-align:left; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:.05em; padding:13px 16px; border-bottom:1px solid var(--line); background:var(--panel2); white-space:nowrap;}
+  td{padding:12px 16px; border-bottom:1px solid rgba(39,44,54,.7); color:#c9d0da; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:rgba(78,168,255,.045);}
+  td.name{color:#eef1f5; font-weight:600; white-space:nowrap;}
+  .yes{color:var(--green); font-weight:600;}
+  .no{color:#ff8a8a; font-weight:600;}
+  .pill{display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; font-weight:600; white-space:nowrap;}
+  .pill.rec{background:rgba(255,176,32,.15); color:var(--amber);}
+  .pill.keep{background:rgba(61,220,151,.13); color:var(--green);}
+  .pill.warn2{background:rgba(255,92,92,.13); color:#ff8a8a;}
+  .pill.info{background:rgba(78,168,255,.13); color:var(--blue);}
+  .pill.mute{background:rgba(152,162,179,.12); color:var(--muted);}
+  .up{color:var(--green); font-weight:600;}
+  .dn{color:#ff8a8a; font-weight:600;}
+
+  .calc{margin-top:16px; border-top:1px dashed var(--line); padding-top:14px;}
+  .calc .line{display:flex; justify-content:space-between; font-size:13.5px; padding:4px 0; color:#c3cad6;}
+  .calc .line span:last-child{font-variant-numeric:tabular-nums; color:#e6e8ec;}
+  .calc .line.total{border-top:1px solid var(--line); margin-top:8px; padding-top:10px; font-weight:700; font-size:15px;}
+  .calc .line.total span:last-child{color:var(--amber);}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;}
+  .plan{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px 22px;}
+  .plan.win{border-color:rgba(61,220,151,.4); background:linear-gradient(180deg,rgba(61,220,151,.05),rgba(23,26,32,1) 45%);}
+  .plan.lose{border-color:rgba(255,92,92,.3);}
+  .plan h4{font-size:15.5px; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .plan .p{font-size:13px; color:var(--muted); margin-top:6px;}
+
+  ol.steps{margin-top:16px; counter-reset:s; list-style:none;}
+  ol.steps li{position:relative; padding:0 0 18px 42px; font-size:14px; color:#c3cad6;}
+  ol.steps li::before{counter-increment:s; content:counter(s); position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:50%; background:var(--panel2); border:1px solid var(--line); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;}
+  ol.steps li::after{content:""; position:absolute; left:13px; top:30px; bottom:2px; width:1px; background:var(--line);}
+  ol.steps li:last-child::after{display:none;}
+  ol.steps b{color:#eef1f5;}
+
+  footer{margin-top:64px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim); line-height:1.9;}
+  footer b{color:var(--muted);}
+  @media (max-width:680px){
+    body{padding:32px 16px 72px;}
+    h1{font-size:23px;}
+    .hero .big{font-size:18px;}
+    .two{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">二手车专项调研 · 2026年9月</div>
+  <h1>五菱缤果 Pro 的二手车，值不值得看？</h1>
+  <p class="sub">结论可能和你预期相反——先把话说清楚</p>
+  <div class="meta">
+    <span class="tag">2026-09-29 抓取</span>
+    <span class="tag">瓜子 / 二手车之家 真实在售车源</span>
+    <span class="tag">含新车 vs 二手算账</span>
+  </div>
+
+  <div class="hero">
+    <div class="big">缤果 Pro 二手<b>不值得买</b>。它是 2026 年 5 月才上市的新车，二手市场全是"准新车"，<em>挂牌价甚至高于新车指导价</em>；更关键的是——<em>买二手车拿不到那 4,500 元政府补贴</em>。</div>
+    <p>算下来，<b>买二手比买新车还贵两千多</b>，还白丢价值 1 万的厂家权益和终身质保。</p>
+    <p>真想买二手，该看的是 <b>缤果 S</b>（2025 年上市，武汉有 33 台在售），价格才真正下探了。</p>
+  </div>
+
+  <!-- 1 为什么 -->
+  <section>
+    <h2><span class="num">1</span>先看清：缤果 Pro 才上市 4 个月</h2>
+    <p class="lead">2026 年 5 月 22 日上市，到 9 月底只有 4 个月。这意味着它的二手市场没有"二手车"，只有"上过牌的新车"。</p>
+
+    <div class="cards">
+      <div class="card bad">
+        <div class="k">二手车之家 · 全国在售</div>
+        <div class="v">2 <small>台</small></div>
+        <div class="n">整个平台就两条缤果 Pro 车源</div>
+      </div>
+      <div class="card">
+        <div class="k">在售车源里程</div>
+        <div class="v">0.02–0.26<small> 万公里</small></div>
+        <div class="n">200 到 2600 公里，全是准新车</div>
+      </div>
+      <div class="card">
+        <div class="k">车龄</div>
+        <div class="v">1–4 <small>个月</small></div>
+        <div class="n">没有一台真正"用过"的车</div>
+      </div>
+    </div>
+
+    <div class="warn">
+      <div class="t">⚠️ 这就是"准新车价格倒挂"</div>
+      <p>新车上牌就亏 15%–20% 的规律，在这台车上失效了。因为卖家是按<b>新车指导价</b>锚定的（甚至还想把购置税、保险钱赚回来），而新车终端实际有优惠——<b>结果二手挂牌价比新车实际成交价还高</b>。</p>
+    </div>
+  </section>
+
+  <!-- 2 真实车源 -->
+  <section>
+    <h2><span class="num">2</span>真实在售车源（全国能搜到的就这么几台）</h2>
+    <p class="lead">数据来自瓜子二手车、二手车之家，2026-09-29 抓取。注意对比最后一列——二手价 vs 新车指导价。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>平台</th><th>版本</th><th>上牌</th><th>里程</th><th>二手挂牌价</th><th>新车指导价</th><th>价差</th><th>车源地</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">二手车之家</td><td>330km 尊享款</td><td>2026 年</td><td>0.02 万 km</td><td><b>5.68 万</b></td><td>5.68 万</td><td><span class="dn">持平</span></td><td>—</td>
+          </tr>
+          <tr>
+            <td class="name">瓜子二手车</td><td>330km 尊享款</td><td>2026-08</td><td>100 km</td><td><b>6.04 万</b></td><td>5.68 万</td><td><span class="dn">贵 3,600</span></td><td>浙江绍兴</td>
+          </tr>
+          <tr>
+            <td class="name">瓜子二手车</td><td>330km 旗舰款</td><td>2026-06</td><td>0.13 万 km</td><td><b>6.61 万</b></td><td>6.38 万</td><td><span class="dn">贵 2,300</span></td><td>浙江湖州</td>
+          </tr>
+          <tr>
+            <td class="name">二手车之家</td><td>403km 旗舰版</td><td>2026 年</td><td>0.26 万 km</td><td><b>6.55 万</b></td><td>7.08 万</td><td><span class="yes">便宜 5,300</span></td><td>—</td>
+          </tr>
+          <tr>
+            <td class="name">瓜子二手车</td><td>版本未标注</td><td>—</td><td>—</td><td><b>7.54 万</b></td><td>—</td><td><span class="dn">高于顶配</span></td><td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px;font-size:13px;color:var(--muted)">
+      注意第 2 行和第 3 行：<b>二手挂牌价高于新车指导价</b>。这在二手车里是非常罕见的信号——说明这批车源根本不是"捡漏"，而是"卖家不想亏"。
+    </p>
+  </section>
+
+  <!-- 3 算账 -->
+  <section>
+    <h2><span class="num">3</span>关键：买二手 vs 买新车，到底哪个便宜</h2>
+    <p class="lead">以 330km 尊享款为例（新车指导价 5.68 万，二手准新车挂牌 5.68 万）。旧车科莱威按卖 2 万计。</p>
+
+    <div class="two">
+      <div class="plan win">
+        <h4>买新车 <span class="pill keep">更划算</span></h4>
+        <div class="p">新车 5.68 万，走置换更新，拿满所有政策</div>
+        <div class="calc">
+          <div class="line"><span>车价</span><span>56,800</span></div>
+          <div class="line"><span>购置税（2026 减半）</span><span>+2,513</span></div>
+          <div class="line"><span>保险 + 上牌</span><span>+3,700</span></div>
+          <div class="line"><span>政府置换补贴（8%）</span><span class="up">−4,544</span></div>
+          <div class="line"><span>旧车科莱威卖出</span><span class="up">−20,000</span></div>
+          <div class="line total"><span>净支出</span><span>约 38,500 元</span></div>
+        </div>
+        <div style="margin-top:12px;font-size:12.5px;color:var(--green);line-height:1.7">
+          ✓ 额外白得：厂家五重礼（价值 1 万，含电动尾门+前备厢、3M 太阳膜、充电服务包）<br>
+          ✓ 三电<b>终身质保</b>（首任车主）<br>
+          ✓ 全新车，0 过户记录
+        </div>
+      </div>
+
+      <div class="plan lose">
+        <h4>买二手准新车</h4>
+        <div class="p">同款车、200 公里、挂牌 5.68 万</div>
+        <div class="calc">
+          <div class="line"><span>车价</span><span>56,800</span></div>
+          <div class="line"><span>购置税</span><span class="yes">0（二手车不征）</span></div>
+          <div class="line"><span>保险 + 过户费</span><span>+4,000</span></div>
+          <div class="line"><span>政府置换补贴</span><span class="dn">0（拿不到）</span></div>
+          <div class="line"><span>旧车科莱威卖出</span><span class="up">−20,000</span></div>
+          <div class="line total"><span>净支出</span><span>约 40,800 元</span></div>
+        </div>
+        <div style="margin-top:12px;font-size:12.5px;color:#ff8a8a;line-height:1.7">
+          ✗ 拿不到政府置换补贴（约 4,500 元）<br>
+          ✗ 拿不到厂家五重礼（价值 1 万）<br>
+          ✗ 三电终身质保变 <b>8 年/12 万公里</b><br>
+          ✗ 车已经是二手的，多一次过户记录
+        </div>
+      </div>
+    </div>
+
+    <div class="warn" style="margin-top:22px">
+      <div class="t">⚠️ 结论：买二手贵 2,300 元，还少拿 1 万权益</div>
+      <p>二手省下的只有购置税 2,513 元，但丢掉的政府补贴是 4,544 元。<b>这一进一出就亏了 2,000 多</b>，再算上厂家五重礼和终身质保，二手完全没有理由选。</p>
+    </div>
+
+    <div class="ok">
+      <div class="t">✓ 政策依据</div>
+      <p>商务部《2026 年汽车以旧换新补贴问答手册》明确：置换更新补贴需上传<b>新车《机动车销售统一发票》</b>和<b>新车《机动车登记证书》</b>。二手车只有《二手车销售统一发票》——<b>政策上就拿不到</b>。</p>
+    </div>
+  </section>
+
+  <!-- 4 新车配置 -->
+  <section>
+    <h2><span class="num">4</span>如果买新车：官方 4 款配置</h2>
+    <p class="lead">2026 年 5 月 22 日上市，指导价 5.68–7.08 万，五门五座。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>配置</th><th>330km 尊享款</th><th>330km 旗舰款</th><th>403km 尊享款</th><th>403km 旗舰款</th></tr></thead>
+        <tbody>
+          <tr><td class="name">指导价</td><td><b>5.68 万</b></td><td>6.38 万</td><td>6.48 万</td><td>7.08 万</td></tr>
+          <tr><td class="name">CLTC 续航</td><td>330 km</td><td>330 km</td><td>403 km</td><td>403 km</td></tr>
+          <tr><td class="name">电池容量</td><td>31.9 kWh</td><td>31.9 kWh</td><td>37.9 kWh</td><td>37.9 kWh</td></tr>
+          <tr><td class="name">政府置换补贴</td><td class="yes">4,544 元</td><td>5,104 元</td><td>5,184 元</td><td>5,664 元</td></tr>
+          <tr><td class="name">购置税（减半）</td><td>2,513 元</td><td>2,823 元</td><td>2,867 元</td><td>3,133 元</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">
+      <b>全系共通</b>：4050×1758×1580mm、轴距 2560mm、五门五座、65kW 前置单电机、<b>快充 30%→80% 仅 15 分钟</b>、支持 3.3kW 外放电、12.8 英寸中控屏 + 8.88 英寸仪表、540° 影像、电动尾门、无钥匙进入 + 无感启动、AEB 自动紧急制动、智能泊车辅助、主驾电动调节 + 前排座椅加热、无线充电、30L 前备厢、后备厢最大 1370L。<br>
+      <b>下定权益</b>（价值 1 万五重礼）：2500 元电动尾门 + 前备厢、3000 元 3M 太阳膜、588 元享 1799 元充电服务包、<b>三电终身质保</b>、三年车机无限流量。
+    </p>
+
+    <div class="warn">
+      <div class="t">⚠️ 别忘了尺寸：缤果 Pro 车长 4050mm</div>
+      <p>比你的科莱威长 <b>91 厘米</b>，比宏光 MINIEV 第五代长 78 厘米。你说"新车不能太大"——这台已经明显属于"变大"的那一档了，建议先到店看看停车是否方便。</p>
+    </div>
+  </section>
+
+  <!-- 5 替代方案 -->
+  <section>
+    <h2><span class="num">5</span>真想买二手，看缤果 S</h2>
+    <p class="lead">缤果 S 是 2025 年 9 月上市的（指导价 6.68–8.98 万），车龄一年左右，车源充足、价格才真正下探。以下是<b>武汉在售的 33 台</b>里的一部分。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>版本</th><th>上牌年份</th><th>里程</th><th>售价</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td class="name">325km 尊享款</td><td>2025</td><td>0.53 万 km</td><td><b>5.74 万</b></td><td><span class="pill keep">全场最低</span></td></tr>
+          <tr><td class="name">325km 尊享款</td><td>2025</td><td>1.29 万 km</td><td>5.90 万</td><td></td></tr>
+          <tr><td class="name">325km 尊享款</td><td>2025</td><td>2.11 万 km</td><td>5.92 万</td><td></td></tr>
+          <tr><td class="name">325km 尊享款</td><td>2026</td><td>0.49 万 km</td><td>5.95 万</td><td></td></tr>
+          <tr><td class="name">325km 尊享款</td><td>2025</td><td>2.34 万 km</td><td>5.99 万</td><td>VIP 车主</td></tr>
+          <tr><td class="name">430km 尊享款</td><td>2025</td><td>2.94 万 km</td><td>6.09 万</td><td>长续航入门</td></tr>
+          <tr><td class="name">325km 旗舰款</td><td>2025</td><td>1.26 万 km</td><td>6.21 万</td><td></td></tr>
+          <tr><td class="name">325km 尊享款</td><td>2025</td><td>0.67 万 km</td><td>6.35 万</td><td></td></tr>
+          <tr><td class="name">430km 旗舰款</td><td>2026</td><td>1.27 万 km</td><td>6.60 万</td><td></td></tr>
+          <tr><td class="name">430km 旗舰款</td><td>2025</td><td>0.52 万 km</td><td>6.76 万</td><td></td></tr>
+          <tr><td class="name">430km 旗舰款</td><td>2025</td><td>0.23 万 km</td><td><b>7.05 万</b></td><td><span class="pill mute">准新顶配</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ok" style="margin-top:18px">
+      <div class="t">✓ 缤果 S 二手的账</div>
+      <p>以 325km 尊享款二手 5.74 万对比新车指导价 6.68 万：<b>确实便宜了约 9,400 元</b>。但要记住——<b>买二手同样拿不到政府置换补贴</b>，所以真实差价会缩小到 4,000 元左右。便宜是便宜，但没有"捡大漏"。</p>
+    </div>
+  </section>
+
+  <!-- 6 避坑 -->
+  <section>
+    <h2><span class="num">6</span>如果最后还是买二手，这三件事必办</h2>
+    <ol class="steps">
+      <li><b>过户当天办"车主变更"</b>——在五菱官方 APP 或 4S 店完成。不办这一步，8 年/12 万公里三电质保<b>可能失效</b>，等于几万块的电池风险自己扛。办起来只要十来分钟。</li>
+      <li><b>要电池检测报告</b>——准新车衰减通常 &lt;5%，但口头承诺不算数。要 4S 店或第三方出具的报告，落到纸面。单块电池更换成本约 2–3 万。</li>
+      <li><b>核验手续和出厂日期</b>——备齐《机动车登记证书》、行驶证、交强险保单；用车架号倒推出厂日期，避免买到"表显新、出厂老"的车；查 12123 确认无抵押、查封、盗抢。</li>
+    </ol>
+
+    <div class="warn">
+      <div class="t">⚠️ 还有一点：二手车保险不便宜</div>
+      <p>新能源车首年保险本就比油车高，二手车过户后按新车重新投保，通常还要贵几百到一千。这部分要算进总成本。</p>
+    </div>
+  </section>
+
+  <!-- 7 怎么自己搜 -->
+  <section>
+    <h2><span class="num">7</span>想自己继续找，怎么搜</h2>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>平台</th><th>怎么筛</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td class="name">瓜子二手车</td><td>搜"缤果Pro" → 定位改武汉</td><td>车源最多，支持全国异地看车；武汉站缤果S 有 33 台</td></tr>
+          <tr><td class="name">懂车帝二手车</td><td>搜"缤果Pro"，按车龄/里程筛</td><td>可看"新车指导价"对比，价格透明度好</td></tr>
+          <tr><td class="name">二手车之家</td><td>品牌 → 五菱 → 缤果Pro</td><td>商家车源多，全国库存一目了然</td></tr>
+          <tr><td class="name">闲鱼 / 转转</td><td>搜"缤果Pro 准新车"</td><td>个人对个人价格最低，但没有第三方检测，风险自担</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hero good" style="margin-top:24px">
+      <div class="big">一句话总结：<em>缤果 Pro 这台车，别买二手</em>。它是新车，二手价没掉下来，还白丢 4,500 元补贴和 1 万权益。</div>
+      <p>想要缤果 Pro → <b>直接买新车</b>，5.68 万起，净支出约 3.85 万。<br>
+         想要便宜的二手 → 看 <b>缤果 S</b>（5.74 万起）或 <b>缤果</b>（4–5 万），但都拿不到政府补贴。<br>
+         想要最省 + 尺寸最小 → 还是 <b>宏光 MINIEV 第五代</b>，净支出约 2 万，车长只比你现在长 12.8 厘米。</p>
+    </div>
+  </section>
+
+  <footer>
+    <b>数据来源</b>：瓜子二手车在售车源页（2026-09-29 抓取）；二手车之家全国缤果Pro/缤果S 车源列表；汽车之家《售5.68万起 五菱缤果Pro上市》（2026-05-22）；商务部《2026年汽车以旧换新补贴问答手册》（2025-12-30）；湖北省商务厅《2026年湖北省汽车以旧换新补贴实施细则》。<br>
+    <b>说明</b>：二手车为"一车一况一价"，本报告列出的挂牌价仅代表抓取时点的平台报价，实际成交价需自行议价核实；新车优惠与政府补贴额度实时变动。本报告为决策参考，不构成交易建议。<br>
+    整理时间：2026-09-29
+  </footer>
+
+</div>
+</body>
+</html>

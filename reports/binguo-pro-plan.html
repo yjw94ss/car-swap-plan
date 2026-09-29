@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>缤果Pro 购车行动方案 · 什么时候买、能拿什么、怎么谈</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a20; --panel2:#1c2029; --line:#272c36;
+    --text:#e6e8ec; --muted:#98a2b3; --dim:#6f7987;
+    --blue:#4ea8ff; --amber:#ffb020; --green:#3ddc97; --red:#ff5c5c; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased; padding:48px 24px 96px;}
+  .wrap{max-width:1000px; margin:0 auto;}
+  .kicker{font-size:12px; letter-spacing:.18em; color:var(--green); text-transform:uppercase; font-weight:600;}
+  h1{font-size:33px; line-height:1.3; margin:10px 0 8px; letter-spacing:-.01em; font-weight:700;}
+  .sub{color:var(--muted); font-size:14px;}
+  .meta{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 12px; background:var(--panel);}
+
+  section{margin-top:52px;}
+  h2{font-size:20px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  h2 .num{display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; font-size:13px; font-weight:700; background:rgba(61,220,151,.15); color:var(--green); flex:none;}
+  h3{font-size:15px; font-weight:650; margin:26px 0 10px; color:#cfd6e0;}
+  p{color:#c3cad6; font-size:14.5px;}
+  .lead{color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+
+  .hero{margin-top:28px; background:linear-gradient(135deg,rgba(61,220,151,.10),rgba(78,168,255,.05)); border:1px solid rgba(61,220,151,.30); border-radius:16px; padding:26px 28px;}
+  .hero .big{font-size:22px; font-weight:700; line-height:1.5; letter-spacing:-.01em;}
+  .hero .big em{font-style:normal; color:var(--amber);}
+  .hero p{margin-top:12px; font-size:14px; color:#b9c1cd;}
+
+  .warn{margin-top:20px; background:rgba(255,92,92,.08); border:1px solid rgba(255,92,92,.32); border-left:3px solid var(--red); border-radius:10px; padding:16px 20px;}
+  .warn .t{font-weight:700; color:#ff8a8a; font-size:14px; margin-bottom:6px;}
+  .warn p{font-size:13.5px; color:#d5c3c3;}
+
+  .ok{margin-top:20px; background:rgba(61,220,151,.07); border:1px solid rgba(61,220,151,.28); border-left:3px solid var(--green); border-radius:10px; padding:16px 20px;}
+  .ok .t{font-weight:700; color:#6ee7b7; font-size:14px; margin-bottom:6px;}
+  .ok p{font-size:13.5px; color:#c2d8cd;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .card .k{font-size:12px; color:var(--dim); letter-spacing:.04em;}
+  .card .v{font-size:22px; font-weight:700; margin-top:6px; letter-spacing:-.02em;}
+  .card .v small{font-size:13px; font-weight:500; color:var(--muted);}
+  .card .n{font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.6;}
+  .card.hl{border-color:rgba(255,176,32,.4); background:linear-gradient(180deg,rgba(255,176,32,.06),rgba(23,26,32,1));}
+  .card.hl .v{color:var(--amber);}
+
+  .tblwrap{margin-top:16px; overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel);}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:620px;}
+  th{text-align:left; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:.05em; padding:13px 16px; border-bottom:1px solid var(--line); background:var(--panel2); white-space:nowrap;}
+  td{padding:12px 16px; border-bottom:1px solid rgba(39,44,54,.7); color:#c9d0da; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:rgba(78,168,255,.045);}
+  td.name{color:#eef1f5; font-weight:600; white-space:nowrap;}
+  .yes{color:var(--green); font-weight:600;}
+  .no{color:#ff8a8a; font-weight:600;}
+  .pill{display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; font-weight:600; white-space:nowrap;}
+  .pill.rec{background:rgba(255,176,32,.15); color:var(--amber);}
+  .pill.keep{background:rgba(61,220,151,.13); color:var(--green);}
+  .pill.warn2{background:rgba(255,92,92,.13); color:#ff8a8a;}
+  .pill.info{background:rgba(78,168,255,.13); color:var(--blue);}
+  .pill.mute{background:rgba(152,162,179,.12); color:var(--muted);}
+  .up{color:var(--green); font-weight:600;}
+  .dn{color:#ff8a8a; font-weight:600;}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;}
+  .plan{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px 22px;}
+  .plan.now{border-color:rgba(61,220,151,.4); background:linear-gradient(180deg,rgba(61,220,151,.05),rgba(23,26,32,1) 45%);}
+  .plan.wait{border-color:rgba(78,168,255,.35);}
+  .plan h4{font-size:15.5px; font-weight:700; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .plan .p{font-size:13px; color:var(--muted); margin-top:6px;}
+  .calc{margin-top:16px; border-top:1px dashed var(--line); padding-top:14px;}
+  .calc .line{display:flex; justify-content:space-between; font-size:13.5px; padding:4px 0; color:#c3cad6;}
+  .calc .line span:last-child{font-variant-numeric:tabular-nums; color:#e6e8ec;}
+  .calc .line.total{border-top:1px solid var(--line); margin-top:8px; padding-top:10px; font-weight:700; font-size:15px;}
+  .calc .line.total span:last-child{color:var(--amber);}
+
+  ol.steps{margin-top:16px; counter-reset:s; list-style:none;}
+  ol.steps li{position:relative; padding:0 0 18px 42px; font-size:14px; color:#c3cad6;}
+  ol.steps li::before{counter-increment:s; content:counter(s); position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:50%; background:var(--panel2); border:1px solid var(--line); color:var(--green); display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;}
+  ol.steps li::after{content:""; position:absolute; left:13px; top:30px; bottom:2px; width:1px; background:var(--line);}
+  ol.steps li:last-child::after{display:none;}
+  ol.steps b{color:#eef1f5;}
+
+  .qa{display:grid; gap:12px; margin-top:16px;}
+  .qa .item{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:10px; padding:14px 18px;}
+  .qa .item .q{font-size:14px; font-weight:600; color:#eef1f5;}
+  .qa .item .a{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  footer{margin-top:64px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim); line-height:1.9;}
+  footer b{color:var(--muted);}
+  @media (max-width:680px){
+    body{padding:32px 16px 72px;}
+    h1{font-size:23px;}
+    .hero .big{font-size:18px;}
+    .two{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">购车行动方案 · 2026年9月</div>
+  <h1>定缤果 Pro 是对的，但"等"这件事得算清</h1>
+  <p class="sub">什么时候买、能拿什么、怎么谈——一份可以直接照着做的方案</p>
+  <div class="meta">
+    <span class="tag">2026-09-29</span>
+    <span class="tag">官方权益已核实</span>
+    <span class="tag">含保守/乐观两档账</span>
+  </div>
+
+  <div class="hero">
+    <div class="big">先告诉你一个关键事实：<em>缤果 Pro 现在基本没有现金优惠</em>——它上市 80 天交付破 5 万台，是小型车销量第二，不愁卖。</div>
+    <p>所以你"等"是有道理的。但我把账算完发现：<b>等与不等，经济上差不多（±3,000 元）</b>。<br>
+       真正该决定的是——<b>你现在这台车，还能不能让你舒服地用下去。</b></p>
+  </div>
+
+  <!-- 1 现状 -->
+  <section>
+    <h2><span class="num">1</span>先说清楚：缤果 Pro 现在的价格是"硬"的</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="k">终端现金优惠</div>
+        <div class="v">0 <small>元</small></div>
+        <div class="n">截至 2026 年 9 月，官方与经销商口径均为"无现金直降"</div>
+      </div>
+      <div class="card hl">
+        <div class="k">上市 80 天交付</div>
+        <div class="v">5 <small>万台</small></div>
+        <div class="n">小型车销量第二——卖得好，就没有降价动力</div>
+      </div>
+      <div class="card">
+        <div class="k">官方赠送权益价值</div>
+        <div class="v">1 <small>万元</small></div>
+        <div class="n">"孟子义宠粉五重礼"，但都是实物/服务，不折现</div>
+      </div>
+    </div>
+
+    <div class="warn">
+      <div class="t">⚠️ 网上说的"缤果 Pro 现金优惠 1.2–2 万"不可信</div>
+      <p>那篇流传很广的文章里，表格列的是<b>缤果和缤果 S 的版本</b>（203km 轻享版、333km 灵犀版、510km 旗舰），不是缤果 Pro；还说"缤果 Pro 上市已一年"——实际才 4 个月。<b>经销商实际报价是"优惠 0.00 万"。</b></p>
+    </div>
+
+    <h3>但官方权益是实打实的，别漏拿</h3>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>权益</th><th>价值 / 内容</th><th>性质</th></tr></thead>
+        <tbody>
+          <tr><td class="name">置换补贴</td><td><b>至高 4,000 元</b></td><td><span class="pill keep">可抵车款</span> 需走店内置换流程</td></tr>
+          <tr><td class="name">贴心守护礼</td><td>3M 太阳膜，价值 3,000 元</td><td><span class="pill mute">实物</span></td></tr>
+          <tr><td class="name">补能无忧礼</td><td>3.5kW 交流充电桩（含 30 米内基础安装）</td><td><span class="pill mute">实物</span></td></tr>
+          <tr><td class="name">质保与流量礼</td><td>首任非营运车主<b>三电终身质保</b> + 三年车机无限流量</td><td><span class="pill keep">长期价值</span></td></tr>
+          <tr><td class="name">限时加配礼</td><td>全系限时赠送电动尾门 + 前备厢（330km 尊享款另加赠 3M 太阳膜）</td><td><span class="pill info">2026 年 9 月金秋礼遇季</span></td></tr>
+          <tr><td class="name">金融（二选一）</td><td>两年零息贷 <b>或</b> 金融贴息 / 置换政策 2,000 元/台</td><td><span class="pill mute">按需选</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2 现在买的账 -->
+  <section>
+    <h2><span class="num">2</span>现在买：三个配置的净支出</h2>
+    <p class="lead">旧车科莱威按卖 2 万计；厂家置换补贴按至高 4,000 元计（需走店内置换，先问清是否要求把车卖给店里）。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>配置</th><th>指导价</th><th>厂家置换补贴</th><th>开票价</th><th>购置税</th><th>政府补贴 8%</th><th>净支出</th></tr></thead>
+        <tbody>
+          <tr style="background:rgba(255,176,32,.06)">
+            <td class="name">330km 尊享款 <span class="pill rec">推荐</span></td>
+            <td>5.68 万</td><td class="up">−4,000</td><td>52,800</td><td>+2,336</td><td class="up">−4,224</td><td><b>约 3.46 万</b></td>
+          </tr>
+          <tr>
+            <td class="name">403km 尊享款</td>
+            <td>6.48 万</td><td class="up">−4,000</td><td>60,800</td><td>+2,690</td><td class="up">−4,864</td><td>约 4.24 万</td>
+          </tr>
+          <tr>
+            <td class="name">403km 旗舰款</td>
+            <td>7.08 万</td><td class="up">−4,000</td><td>66,800</td><td>+2,956</td><td class="up">−5,344</td><td>约 4.83 万</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:var(--dim)">
+      净支出 = 开票价 + 购置税（减半）+ 保险（约 3,200–3,400）+ 上牌 500 − 政府置换补贴 − 旧车卖出 2 万。<br>
+      若经销商按指导价开票、把 4,000 元补贴另算，政府补贴会变成 4,544 元，净支出各减约 320 元。
+    </p>
+
+    <div class="ok">
+      <div class="t">✓ 为什么推荐 330km 尊享款</div>
+      <p>你现在的科莱威是 302km 续航，330km 版<b>不缩水还有富余</b>；而 403km 版要多花约 7,800 元。<br>
+         如果你有家充、每天通勤 30km 以内，330km 版一周一充完全够用，这 7,800 元不如留着。</p>
+    </div>
+  </section>
+
+  <!-- 3 等的账 -->
+  <section>
+    <h2><span class="num">3</span>等下去，到底省不省钱</h2>
+    <p class="lead">假设等到 2027 年，缤果 Pro 出现 8,000 元现金优惠（参考缤果 S 上市一年的轨迹），以 330km 尊享款为例。</p>
+
+    <div class="two">
+      <div class="plan now">
+        <h4>现在买（2026 年）<span class="pill keep">补贴确定</span></h4>
+        <div class="calc" style="margin-top:12px;border-top:none;padding-top:0">
+          <div class="line"><span>车价</span><span>56,800</span></div>
+          <div class="line"><span>厂家置换补贴</span><span class="up">−4,000</span></div>
+          <div class="line"><span>政府置换补贴</span><span class="up">−4,224</span></div>
+          <div class="line"><span>购置税 + 保险 + 上牌</span><span>+6,036</span></div>
+          <div class="line"><span>旧车卖出</span><span class="up">−20,000</span></div>
+          <div class="line total"><span>净支出</span><span>约 34,600 元</span></div>
+        </div>
+        <div class="p" style="margin-top:10px">补贴白纸黑字，锁定即拿到。</div>
+      </div>
+
+      <div class="plan wait">
+        <h4>等到 2027 年</h4>
+        <div class="calc" style="margin-top:12px;border-top:none;padding-top:0">
+          <div class="line"><span>车价（假设降 8,000）</span><span>48,800</span></div>
+          <div class="line"><span>厂家置换补贴</span><span class="up">−4,000</span></div>
+          <div class="line"><span>政府置换补贴（不确定）</span><span class="dn">0</span></div>
+          <div class="line"><span>购置税 + 保险 + 上牌</span><span>+5,782</span></div>
+          <div class="line"><span>旧车卖出（又贬 5,000）</span><span class="up">−15,000</span></div>
+          <div class="line total"><span>净支出</span><span>约 35,600 元</span></div>
+        </div>
+        <div class="p" style="margin-top:10px">若 2027 年补贴延续，则净支出降到约 <b>3.20 万</b>，反而省 2,600 元。</div>
+      </div>
+    </div>
+
+    <div class="warn" style="margin-top:22px">
+      <div class="t">⚠️ 结论：等的结果是 −2,600 ~ +1,000，基本是平的</div>
+      <p>新车降价（对你有利）会被两件事吃掉：<b>旧车继续贬值</b>（每年 3,000–5,000）和<b>政府补贴的不确定性</b>（2026 年政策是年度政策，2027 年要重新等文件）。<br>
+         <b>所以"等"不是一笔划算的买卖，也不是一笔亏本的买卖。该不该等，取决于你的车还能不能让你舒服地用下去。</b></p>
+    </div>
+  </section>
+
+  <!-- 4 决策 -->
+  <section>
+    <h2><span class="num">4</span>所以你到底该不该等</h2>
+
+    <div class="plan now">
+      <h4>情况一：现在这台车已经让你不舒服 <span class="pill keep">现在就买</span></h4>
+      <div class="p">判断标准：冬天实际续航掉到 100km 以内 / 开始频繁维修 / 经常因为"2 门"或"没快充"不方便。<br>
+        这时候<b>锁定 4,224 元政府补贴 + 旧车卖在最高点</b>，比省那点差价重要得多。而且补贴资金按月限额、用完即止，越往后越可能排不上。</div>
+    </div>
+
+    <div class="plan wait">
+      <h4>情况二：车还能用，只是想升级 <span class="pill info">可以等，但设好观察点</span></h4>
+      <div class="p">那就等，但别漫无目的地等。盯这三个时点：<br>
+        <b>① 2026 年 12 月</b>——经销商年度冲量，可能出现第一批现金优惠，同时还能赶 2026 年补贴；<br>
+        <b>② 2027 年 3–4 月</b>——上市一周年 + 春季车展，参考缤果 S 的节奏，这时候万元级优惠的概率最大；<br>
+        <b>③ 随时盯湖北补贴额度</b>——一旦荆门额度告急，立刻停止等待。</div>
+    </div>
+
+    <div class="hero" style="margin-top:24px">
+      <div class="big">我的建议：<em>如果你问的是"要不要为了省钱而等"——不值得等。如果是"车还能开、不急着换"——那就等到 12 月或明年春天，同时盯住补贴额度。</em></div>
+      <p>缤果 Pro 是好选择：五门五座、330/403km、3C 快充（15 分钟 30%→80%）、三电终身质保，净支出 3.46 万。<br>
+         唯一要提醒的——<b>它车长 4050mm，比你的科莱威长 91 厘米</b>。这个你之前说过在意，建议先去店里试停一次再定。</p>
+    </div>
+  </section>
+
+  <!-- 5 现在就能做 -->
+  <section>
+    <h2><span class="num">5</span>不管你决定等不等，这三件事现在就能做</h2>
+    <ol class="steps">
+      <li><b>去 4S 店试停一次</b>——重点不是试驾，是<b>把车停进你平时用的那个车位</b>。4050mm 对比你现在的 3140mm，多出 91 厘米，老小区窄车位差别很明显。这一关过了，后面才谈得上。</li>
+      <li><b>给旧车做独立估价</b>——先上瓜子/懂车帝线上估价，再找 2–3 家车商实车评估，拿到书面报价。别一开始就告诉 4S 店你要置换，否则他们会用"置换补贴"来压低你的旧车收购价。</li>
+      <li><b>打电话确认湖北补贴额度</b>——问荆门市商务局或查懂车帝 App"政府补贴"频道，确认 10 月/本月是否还有额度。<b>这个信息决定你是"现在买"还是"可以等"。</b></li>
+    </ol>
+  </section>
+
+  <!-- 6 到店必问 -->
+  <section>
+    <h2><span class="num">6</span>到店必问的 6 个问题</h2>
+    <div class="qa">
+      <div class="item">
+        <div class="q">① "这台车有没有现金优惠？优惠多少？"</div>
+        <div class="a">目前应该是 0。如果销售说"有 1 万优惠"，让他写进报价单——大概率是把赠送权益折算了。</div>
+      </div>
+      <div class="item">
+        <div class="q">② "置换补贴至高 4,000 元，我这种情况具体给多少？旧车一定要卖给店里吗？"</div>
+        <div class="a">这一条最关键。如果必须卖给店里，要对比"自己卖 2 万"和"店里收 1.7 万 + 补贴 4,000"哪个划算。</div>
+      </div>
+      <div class="item">
+        <div class="q">③ "开票价按多少开？"</div>
+        <div class="a">直接影响政府补贴金额（按开票价 8% 算）。别让店里低开票，也别把赠送权益算进车价。</div>
+      </div>
+      <div class="item">
+        <div class="q">④ "赠送的充电桩包安装吗？30 米内免费，超出怎么算？"</div>
+        <div class="a">超出部分按米收费，老小区走线远的话可能上千。</div>
+      </div>
+      <div class="item">
+        <div class="q">⑤ "三电终身质保有什么条件？"</div>
+        <div class="a">确认是"首任非营运车主"，以及是否要求全程店内保养。这是这台车相对科莱威的实打实升级。</div>
+      </div>
+      <div class="item">
+        <div class="q">⑥ "政府置换补贴你们协助办吗？走哪个平台？"</div>
+        <div class="a">湖北入口是懂车帝 App"政府补贴"频道。旧车过户必须拿到《二手车销售统一发票》。</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>数据来源</b>：汽车之家《售5.68万起 五菱缤果Pro上市》（2026-05-22）；新浪汽车《五菱缤果PRO的官方补贴是多少》（2026-09-09）；新浪汽车《五菱缤果Pro的购车优惠政策有哪些》（2026-08-27，"终端暂无现金直降"）；太平洋汽车《五菱缤果Pro限时优惠》（2026-09-09，上市80天交付超5万台）；汽车之家华境汽车武汉体验中心经销商报价页（2026-09-21）；无敌电动网五菱缤果/缤果S 全国优惠汇总（2026-09）；湖北省商务厅《2026年湖北省汽车以旧换新补贴实施细则》。<br>
+    <b>说明</b>：终端优惠与政府补贴额度实时变动，等待情景中的"2027 年降价 8,000 元"为基于缤果 S 价格轨迹的假设，非预测。所有金额以经销商书面报价单和补贴平台审核结果为准。本报告为决策参考，不构成交易建议。<br>
+    整理时间：2026-09-29
+  </footer>
+
+</div>
+</body>
+</html>

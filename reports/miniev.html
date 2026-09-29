@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宏光MINIEV 专项调研 · 优惠 / 补贴资格 / 实际支出</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a20; --panel2:#1c2029; --line:#272c36;
+    --text:#e6e8ec; --muted:#98a2b3; --dim:#6f7987;
+    --blue:#4ea8ff; --amber:#ffb020; --green:#3ddc97; --red:#ff5c5c; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased; padding:48px 24px 96px;
+  }
+  .wrap{max-width:1000px; margin:0 auto;}
+  .kicker{font-size:12px; letter-spacing:.18em; color:var(--amber); text-transform:uppercase; font-weight:600;}
+  h1{font-size:34px; line-height:1.3; margin:10px 0 8px; letter-spacing:-.01em; font-weight:700;}
+  .sub{color:var(--muted); font-size:14px;}
+  .meta{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 12px; background:var(--panel);}
+
+  section{margin-top:52px;}
+  h2{font-size:20px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  h2 .num{display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; font-size:13px; font-weight:700; background:rgba(255,176,32,.15); color:var(--amber); flex:none;}
+  h3{font-size:15px; font-weight:650; margin:26px 0 10px; color:#cfd6e0;}
+  p{color:#c3cad6; font-size:14.5px;}
+  .lead{color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+
+  .hero{margin-top:28px; background:linear-gradient(135deg,rgba(255,176,32,.11),rgba(78,168,255,.06)); border:1px solid rgba(255,176,32,.30); border-radius:16px; padding:26px 28px;}
+  .hero .big{font-size:22px; font-weight:700; line-height:1.5; letter-spacing:-.01em;}
+  .hero .big em{font-style:normal; color:var(--amber);}
+  .hero p{margin-top:12px; font-size:14px; color:#b9c1cd;}
+
+  .warn{margin-top:20px; background:rgba(255,92,92,.08); border:1px solid rgba(255,92,92,.32); border-left:3px solid var(--red); border-radius:10px; padding:16px 20px;}
+  .warn .t{font-weight:700; color:#ff8a8a; font-size:14px; margin-bottom:6px;}
+  .warn p{font-size:13.5px; color:#d5c3c3;}
+
+  .ok{margin-top:20px; background:rgba(61,220,151,.07); border:1px solid rgba(61,220,151,.28); border-left:3px solid var(--green); border-radius:10px; padding:16px 20px;}
+  .ok .t{font-weight:700; color:#6ee7b7; font-size:14px; margin-bottom:6px;}
+  .ok p{font-size:13.5px; color:#c2d8cd;}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .card .k{font-size:12px; color:var(--dim); letter-spacing:.04em;}
+  .card .v{font-size:22px; font-weight:700; margin-top:6px; letter-spacing:-.02em;}
+  .card .v small{font-size:13px; font-weight:500; color:var(--muted);}
+  .card .n{font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.6;}
+  .card.hl{border-color:rgba(255,176,32,.4); background:linear-gradient(180deg,rgba(255,176,32,.06),rgba(23,26,32,1));}
+  .card.hl .v{color:var(--amber);}
+
+  .tblwrap{margin-top:16px; overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel);}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:660px;}
+  th{text-align:left; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:.05em; padding:13px 16px; border-bottom:1px solid var(--line); background:var(--panel2); white-space:nowrap;}
+  td{padding:13px 16px; border-bottom:1px solid rgba(39,44,54,.7); color:#c9d0da; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:rgba(78,168,255,.045);}
+  td.name{color:#eef1f5; font-weight:600; white-space:nowrap;}
+  .yes{color:var(--green); font-weight:700;}
+  .no{color:var(--dim);}
+  .pill{display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; font-weight:600; white-space:nowrap;}
+  .pill.rec{background:rgba(255,176,32,.15); color:var(--amber);}
+  .pill.keep{background:rgba(61,220,151,.13); color:var(--green);}
+  .pill.warn2{background:rgba(255,92,92,.13); color:#ff8a8a;}
+  .pill.info{background:rgba(78,168,255,.13); color:var(--blue);}
+  .pill.mute{background:rgba(152,162,179,.12); color:var(--muted);}
+  .up{color:var(--green); font-weight:600;}
+
+  .bars{margin-top:20px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 24px 14px;}
+  .barrow{display:grid; grid-template-columns:150px 1fr 92px; align-items:center; gap:12px; padding:7px 0;}
+  .barrow .lbl{font-size:13px; color:#c9d0da; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .barrow .lbl.base{color:var(--dim);}
+  .track{height:16px; background:rgba(255,255,255,.045); border-radius:5px; overflow:hidden;}
+  .fill{height:100%; border-radius:5px; background:linear-gradient(90deg,#d98b12,#ffb020);}
+  .fill.base{background:linear-gradient(90deg,#4a5260,#6b7484);}
+  .fill.blue{background:linear-gradient(90deg,#3d7fd6,#4ea8ff);}
+  .fill.purple{background:linear-gradient(90deg,#7c5ce0,#a78bfa);}
+  .barrow .val{font-size:12.5px; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums;}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--dim);}
+  .legend i{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:6px; vertical-align:middle;}
+
+  .plan{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px 24px; margin-top:16px;}
+  .plan.top{border-color:rgba(255,176,32,.4); background:linear-gradient(180deg,rgba(255,176,32,.055),rgba(23,26,32,1) 40%);}
+  .plan .head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap;}
+  .plan .head h4{font-size:17px; font-weight:700;}
+  .plan .head .price{font-size:14px; color:var(--amber); font-weight:600;}
+  .plan .why{font-size:13.5px; color:var(--muted); margin-top:8px;}
+  .calc{margin-top:16px; border-top:1px dashed var(--line); padding-top:14px;}
+  .calc .line{display:flex; justify-content:space-between; font-size:13.5px; padding:4px 0; color:#c3cad6;}
+  .calc .line span:last-child{font-variant-numeric:tabular-nums; color:#e6e8ec;}
+  .calc .line.total{border-top:1px solid var(--line); margin-top:8px; padding-top:10px; font-weight:700; font-size:15px;}
+  .calc .line.total span:last-child{color:var(--amber);}
+  .calc .note{font-size:12px; color:var(--dim); margin-top:10px;}
+
+  ol.steps{margin-top:16px; counter-reset:s; list-style:none;}
+  ol.steps li{position:relative; padding:0 0 18px 42px; font-size:14px; color:#c3cad6;}
+  ol.steps li::before{counter-increment:s; content:counter(s); position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:50%; background:var(--panel2); border:1px solid var(--line); color:var(--amber); display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;}
+  ol.steps li::after{content:""; position:absolute; left:13px; top:30px; bottom:2px; width:1px; background:var(--line);}
+  ol.steps li:last-child::after{display:none;}
+  ol.steps b{color:#eef1f5;}
+
+  footer{margin-top:64px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim); line-height:1.9;}
+  footer b{color:var(--muted);}
+  @media (max-width:640px){
+    body{padding:32px 16px 72px;}
+    h1{font-size:24px;}
+    .hero .big{font-size:18px;}
+    .barrow{grid-template-columns:96px 1fr 74px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">专项调研 · 2026年9月</div>
+  <h1>五菱宏光 MINIEV：优惠、补贴资格、实际要花多少钱</h1>
+  <p class="sub">针对你的情况：科莱威 CLEVER 置换 · 湖北荆门 · 新车不能太大</p>
+  <div class="meta">
+    <span class="tag">2026-09-29 数据</span>
+    <span class="tag">第五代四门版 · 4 款配置</span>
+    <span class="tag">参数取自五菱官网</span>
+  </div>
+
+  <div class="hero">
+    <div class="big">能拿补贴。<b>厂家优惠 + 政府置换补贴可以叠加</b>，你那台科莱威卖掉之后，<em>换 205km 进阶款实际净支出约 2.0–2.7 万</em>。</div>
+    <p>而且第五代车长 <b>3268mm</b>，只比你的科莱威长 <b>12.8 厘米</b>——这是"不能太大"这个约束下几乎最合适的答案。</p>
+  </div>
+
+  <div class="warn">
+    <div class="t">⚠️ 但有两个前提，必须先确认</div>
+    <p>
+      1. <b>你现在的车是 302km 续航，换 205km 版本等于续航缩水。</b>如果在意这点，得选 301km 版本，价格和净支出都会上一档。<br>
+      2. <b>9 月官方权益是月度限时活动</b>（1000 元抵 3000 元、置换补贴等），月底容易收紧或改政策；政府补贴又是按月限额、用完即止。<b>两件事都要在本月内问清。</b>
+    </p>
+  </div>
+
+  <!-- 1 补贴资格 -->
+  <section>
+    <h2><span class="num">1</span>先回答：能不能拿补贴？能，但只能走"置换"</h2>
+    <p class="lead">宏光 MINIEV 是纯电乘用车，在《减免车辆购置税的新能源汽车车型目录》内，符合湖北省置换更新的车型要求。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>政策条件</th><th>要求</th><th>你的情况</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">路径选择</td>
+            <td>报废更新 / 置换更新 二选一</td>
+            <td><span class="pill keep">置换更新</span> 报废要求旧车 2019-12-31 前注册，你的车 2021 年</td>
+          </tr>
+          <tr>
+            <td class="name">旧车登记时间</td>
+            <td>2025-01-08 前登记在本人名下，且一直未变更</td>
+            <td><span class="yes">✓ 符合</span> 你开了 5 年</td>
+          </tr>
+          <tr>
+            <td class="name">新车车型</td>
+            <td>须在《减免车辆购置税的新能源汽车车型目录》内</td>
+            <td><span class="yes">✓ 符合</span> 宏光 MINIEV 在目录内</td>
+          </tr>
+          <tr>
+            <td class="name">发票 / 登记地</td>
+            <td>新车发票和登记证书须在<b>湖北省</b>开具办理</td>
+            <td><span class="yes">✓ 符合</span> 荆门买车本地上牌</td>
+          </tr>
+          <tr>
+            <td class="name">时间窗口</td>
+            <td>旧车转让 + 新车购买全部手续须在 2026-01-01 ~ 12-31 内完成</td>
+            <td><span class="yes">✓ 来得及</span> 但补贴按月限额，越早越好</td>
+          </tr>
+          <tr>
+            <td class="name">补贴金额</td>
+            <td>新能源乘用车按<b>新车价 8%</b>，封顶 1.5 万</td>
+            <td><span class="yes">约 3,000–4,400 元</span> 见下方测算</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ok">
+      <div class="t">✓ 关键结论：厂家的"置换补贴"和政府的"置换补贴"是两笔钱</div>
+      <p>很多销售会把它们混在一起报"综合优惠"。厂家的是让利，政府的是财政补贴，<b>正常情况下可以同时拿</b>。但厂家置换补贴往往要求旧车过户到店内或指定渠道——这一点务必在签合同前问清楚。</p>
+    </div>
+  </section>
+
+  <!-- 2 官方参数 -->
+  <section>
+    <h2><span class="num">2</span>第五代四门版：官方参数与 4 款配置</h2>
+    <p class="lead">以下数据取自上汽通用五菱官网参数页与汽车之家参数表，是这次调研里最可靠的一份。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>配置</th><th>205km 进阶款</th><th>205km 臻享款</th><th>301km 进阶款</th><th>301km 臻享款</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">上市价格</td><td><b>4.48 万</b></td><td>4.98 万</td><td>4.98 万</td><td>5.48 万</td></tr>
+          <tr><td class="name">CLTC 续航</td><td>205 km</td><td>205 km</td><td>301 km</td><td>301 km</td></tr>
+          <tr><td class="name">电池容量</td><td>16.2 kWh</td><td>16.2 kWh</td><td>25.1 kWh</td><td>25.1 kWh</td></tr>
+          <tr><td class="name">直流快充 30-80%</td><td class="yes">35 min 标配</td><td class="yes">35 min</td><td class="yes">35 min</td><td class="yes">35 min</td></tr>
+          <tr><td class="name">交流慢充 20-100%</td><td>4.8 h</td><td>4.8 h</td><td>7.2 h</td><td>7.2 h</td></tr>
+          <tr><td class="name">后制动器</td><td>鼓刹</td><td>盘刹</td><td>鼓刹</td><td>盘刹</td></tr>
+          <tr><td class="name">驻车制动</td><td>机械手刹</td><td>电子驻车</td><td>机械手刹</td><td>电子驻车</td></tr>
+          <tr><td class="name">倒车影像</td><td class="no">—</td><td class="yes">●</td><td class="no">—</td><td class="yes">●</td></tr>
+          <tr><td class="name">10.1 英寸中控屏</td><td class="no">—</td><td class="yes">●</td><td class="no">—</td><td class="yes">●</td></tr>
+          <tr><td class="name">车身稳定 ESC / TCS / 坡起辅助</td><td class="no">—</td><td class="yes">●</td><td class="no">—</td><td class="yes">●</td></tr>
+          <tr><td class="name">主副驾双气囊</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td></tr>
+          <tr><td class="name">后倒车雷达</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">
+      全系共通：30kW 后置后驱电机、最高车速 101km/h、最小转弯半径 4.5m、车长 3268mm / 轴距 2190mm、4 门 4 座、后备箱 170L（可拓展 838L）、神炼电池（磷酸铁锂）、<b>首任车主三电终身质保（非营运）</b>。
+    </p>
+
+    <div class="ok">
+      <div class="t">✓ 一个很好用的选车分岔口</div>
+      <p>205km 臻享款 和 301km 进阶款 <b>同为 4.98 万</b>。前者买"配置"（倒车影像、中控屏、ESC、电子驻车），后者买"续航"（+96km）。<b>你有家充、每天通勤短 → 选臻享款；没家充或要跑远 → 选 301km。</b></p>
+    </div>
+  </section>
+
+  <!-- 3 尺寸 -->
+  <section>
+    <h2><span class="num">3</span>尺寸：几乎和你的科莱威一样大</h2>
+    <p class="lead">这是这台车对你最核心的价值——不用改变任何停车习惯，但车从 2 门变成 4 门。</p>
+
+    <div class="bars">
+      <div class="barrow">
+        <div class="lbl base">科莱威 CLEVER（你现在）</div>
+        <div class="track"><div class="fill base" style="width:83.1%"></div></div>
+        <div class="val">3140 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">宏光MINIEV 第五代</div>
+        <div class="track"><div class="fill" style="width:86.5%"></div></div>
+        <div class="val">3268 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">长安 Lumin</div>
+        <div class="track"><div class="fill blue" style="width:87.1%"></div></div>
+        <div class="val">3293 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">比亚迪海鸥</div>
+        <div class="track"><div class="fill purple" style="width:100%"></div></div>
+        <div class="val">3780 mm</div>
+      </div>
+      <div class="legend">
+        <span>长度条按 3780mm = 100% 折算，便于直观比较</span>
+      </div>
+    </div>
+
+    <div class="tblwrap" style="margin-top:16px">
+      <table>
+        <thead><tr><th>项目</th><th>科莱威 CLEVER</th><th>宏光MINIEV 第五代</th><th>变化</th></tr></thead>
+        <tbody>
+          <tr><td class="name">车长</td><td>3140 mm</td><td>3268 mm</td><td>+128 mm</td></tr>
+          <tr><td class="name">车宽</td><td>1648 mm</td><td>1520 mm</td><td><span style="color:#ff8a8a">−128 mm（更窄）</span></td></tr>
+          <tr><td class="name">轴距</td><td>2000 mm</td><td>2190 mm</td><td>+190 mm</td></tr>
+          <tr><td class="name">车门 / 座位</td><td>2 门 4 座</td><td>4 门 4 座</td><td><span class="yes">后排可正常上下车</span></td></tr>
+          <tr><td class="name">后备箱</td><td>很小</td><td>170L / 拓展 838L</td><td>明显更能装</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warn">
+      <div class="t">⚠️ 唯一的"退步"：车宽窄了 12.8 厘米</div>
+      <p>科莱威车宽 1648mm，宏光MINIEV 只有 1520mm。前排两人会明显更"贴"，横向空间是退步的。建议你到店坐进去实际感受一下再决定。</p>
+    </div>
+  </section>
+
+  <!-- 4 优惠清单 -->
+  <section>
+    <h2><span class="num">4</span>优惠到底有哪些：三类，分开算</h2>
+    <p class="lead">市面上把这三类混着叫"优惠"，是价格说不清的根源。分开看就清楚了。</p>
+
+    <h3>① 厂家 9 月官方权益（全国统一，最可靠）</h3>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>权益</th><th>折算价值</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td class="name">1000 元抵 3000 元购车款</td><td>−2,000 元</td><td>相当于车款直降 2000</td></tr>
+          <tr><td class="name">置换补贴</td><td>至高 6,000 元</td><td>需确认宏光MINIEV 具体档位，可能要求旧车过户至店内</td></tr>
+          <tr><td class="name">3M 太阳膜</td><td>价值 3,000 元</td><td>实物，不折现</td></tr>
+          <tr><td class="name">588 元享至高 1799 元充电服务包</td><td>约省 1,200 元</td><td>实物服务，不折现</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:var(--muted)">来源：汽车之家《各大品牌 9 月限时购车权益汇总》，2026-09-01 发布。属月度活动，9 月底可能调整。</p>
+
+    <h3>② 经销商终端现金优惠（各地差异极大，必须实谈）</h3>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>地区</th><th>车型</th><th>优惠幅度</th><th>优惠后裸车</th></tr></thead>
+        <tbody>
+          <tr><td class="name">河北沧州</td><td>2026款 205km 进阶款</td><td>6,000 元</td><td>3.88 万</td></tr>
+          <tr><td class="name">河北沧州</td><td>2026款 301km 臻享款</td><td>5,000 元</td><td>4.98 万</td></tr>
+          <tr><td class="name">北京</td><td>2026款 205km 进阶款</td><td>约 8,900 元</td><td>3.59 万（需店内上牌/保险）</td></tr>
+          <tr><td class="name">江苏泰州</td><td>四门版 205km</td><td>7,000 元</td><td>3.78 万</td></tr>
+          <tr><td class="name">湖北荆门</td><td>—</td><td><span class="pill mute">未查到公开报价</span></td><td>需到店谈，按 3,000–5,000 预估</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:var(--muted)">来源：无敌电动网 2026-09-23 全国优惠汇总、新浪汽车 9 月各地方报价。异地报价不可直接套用，但可以作为砍价的参照——<b>拿外地的优惠截图去谈，通常有效</b>。</p>
+
+    <h3>③ 政府置换更新补贴（湖北省）</h3>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>新车开票价</th><th>补贴（8%）</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>4.48 万</td><td>3,584 元</td><td rowspan="4" style="vertical-align:middle">按《二手车销售统一发票》+ 新车发票实算；<br>申请入口：<b>懂车帝 App →「政府补贴」频道</b>，或搜"湖北省汽车置换更新"</td></tr>
+          <tr><td>4.98 万</td><td>3,984 元</td></tr>
+          <tr><td>5.48 万</td><td>4,384 元</td></tr>
+          <tr><td>（封顶）</td><td>最高 1.5 万</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warn">
+      <div class="t">⚠️ 关于"购置税兜底"：别当确定项</div>
+      <p>2026 年新能源购置税改为减半征收，宏光MINIEV 要多掏约 2,000 元。今年上半年五菱曾推出"官方补贴另一半购置税"的兜底政策，但<b>9 月官方权益清单里已经没有这一条</b>，很可能已结束。<b>到店直接问："现在还有没有购置税兜底？"</b>有就再省约 2,000 元，没有就按下面测算来。</p>
+    </div>
+  </section>
+
+  <!-- 5 落地账 -->
+  <section>
+    <h2><span class="num">5</span>实际要支出多少：三档测算</h2>
+    <p class="lead">前提：旧车科莱威卖出 <b>20,000 元</b>（车商价 1.8–2.2 万的中值）；湖北荆门购车、本地上牌；走置换更新路径。</p>
+
+    <div class="cards">
+      <div class="card hl">
+        <div class="k">205km 进阶款 · 净支出</div>
+        <div class="v">2.0–2.7<small> 万</small></div>
+        <div class="n">区间来自"厂家权益+终端优惠能否全部拿到"</div>
+      </div>
+      <div class="card">
+        <div class="k">205km 臻享款 · 净支出</div>
+        <div class="v">约 2.8<small> 万</small></div>
+        <div class="n">多了倒车影像、中控屏、ESC</div>
+      </div>
+      <div class="card">
+        <div class="k">301km 臻享款 · 净支出</div>
+        <div class="v">约 3.3<small> 万</small></div>
+        <div class="n">续航不缩水的那一款</div>
+      </div>
+    </div>
+
+    <div class="plan top">
+      <div class="head">
+        <h4>205km 进阶款 · 4.48 万 <span class="pill rec">最省钱</span></h4>
+        <div class="price">净支出约 2.0–2.7 万</div>
+      </div>
+      <div class="why">两种情形并列。乐观情形 = 9 月官方权益 + 荆门终端优惠 3,000 元都拿到；保守情形 = 只有政府补贴，厂家/终端优惠一项都没谈到。</div>
+      <div class="calc">
+        <div class="line"><span>官方指导价</span><span>44,800</span></div>
+        <div class="line"><span>1000 元抵 3000 元购车款</span><span class="up">−2,000</span></div>
+        <div class="line"><span>厂家置换补贴（保守按 2,000 估，至高 6,000）</span><span class="up">−2,000</span></div>
+        <div class="line"><span>经销商终端优惠（乐观 3,000 / 保守 0）</span><span class="up">−3,000 ~ 0</span></div>
+        <div class="line"><span>新车开票价</span><span>37,800 ~ 40,800</span></div>
+        <div class="line"><span>车辆购置税（2026 年减半征收）</span><span>+1,673 ~ +1,805</span></div>
+        <div class="line"><span>交强险 + 商业险（首年）</span><span>+3,200</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>政府置换补贴（开票价 × 8%）</span><span class="up">−3,024 ~ −3,264</span></div>
+        <div class="line"><span>旧车科莱威卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 20,100 ~ 23,000 元</span></div>
+        <div class="note">注：若"购置税兜底"仍有效，再减约 1,700–1,800 元。</div>
+      </div>
+    </div>
+
+    <div class="plan">
+      <div class="head">
+        <h4>205km 臻享款 · 4.98 万</h4>
+        <div class="price">净支出约 2.8 万</div>
+      </div>
+      <div class="why">比进阶款贵 5,000 元，换来倒车影像、10.1 英寸中控屏、车身稳定系统 ESC、电子驻车、盘刹。如果你停车位偏窄或是新手，这 5,000 元很值。</div>
+      <div class="calc">
+        <div class="line"><span>官方指导价</span><span>49,800</span></div>
+        <div class="line"><span>厂家权益 + 置换补贴（合计）</span><span class="up">−4,000</span></div>
+        <div class="line"><span>新车开票价</span><span>45,800</span></div>
+        <div class="line"><span>车辆购置税（减半）</span><span>+2,027</span></div>
+        <div class="line"><span>交强险 + 商业险（首年）</span><span>+3,200</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>政府置换补贴（8%）</span><span class="up">−3,664</span></div>
+        <div class="line"><span>旧车科莱威卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 27,900 元</span></div>
+      </div>
+    </div>
+
+    <div class="plan">
+      <div class="head">
+        <h4>301km 臻享款 · 5.48 万 <span class="pill info">续航不缩水</span></h4>
+        <div class="price">净支出约 3.3 万</div>
+      </div>
+      <div class="why">你现在的科莱威是 302km，只有这一款的续航和它持平（301km），且带快充和全套舒适配置。如果不想"换完车反而更不敢跑远"，就选它。</div>
+      <div class="calc">
+        <div class="line"><span>官方指导价</span><span>54,800</span></div>
+        <div class="line"><span>厂家权益 + 置换补贴（合计）</span><span class="up">−4,000</span></div>
+        <div class="line"><span>新车开票价</span><span>50,800</span></div>
+        <div class="line"><span>车辆购置税（减半）</span><span>+2,248</span></div>
+        <div class="line"><span>交强险 + 商业险（首年）</span><span>+3,500</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>政府置换补贴（8%）</span><span class="up">−4,064</span></div>
+        <div class="line"><span>旧车科莱威卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 32,984 元</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 到店问题 -->
+  <section>
+    <h2><span class="num">6</span>到店必须问清的 7 个问题</h2>
+    <p class="lead">按顺序问，把每一笔钱落到纸面上。销售最怕你把这几件事拆开算。</p>
+    <ol class="steps">
+      <li><b>"这台车的裸车价是多少？"</b>——先问裸车，别让销售从"综合优惠"开始讲。</li>
+      <li><b>"1000 元抵 3000 元，是不是车款直降 2000？"</b>——确认抵扣形式，是抵车款还是抵尾款。</li>
+      <li><b>"置换补贴至高 6000，宏光MINIEV 具体给多少？旧车一定要卖给店里吗？"</b>——这一条最关键。如果必须卖给店里，要对比"自己卖 2 万"和"店里收 1.7 万 + 补贴 4000"哪个划算。</li>
+      <li><b>"现在还有没有购置税兜底？"</b>——有就再省约 2,000 元。</li>
+      <li><b>"保险能不能自己买？"</b>——店里捆绑保险通常贵 500–1,000 元。</li>
+      <li><b>"开票价按多少开？"</b>——<b>直接影响政府补贴金额</b>（按开票价 8%），也影响购置税。别让店里低开。</li>
+      <li><b>"政府置换补贴你们协助办吗？走哪个平台？"</b>——湖北入口是懂车帝 App 的"政府补贴"频道，旧车过户必须拿到《二手车销售统一发票》。</li>
+    </ol>
+  </section>
+
+  <!-- 7 值不值 -->
+  <section>
+    <h2><span class="num">7</span>最后：这笔买卖值不值</h2>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>维度</th><th>科莱威 CLEVER</th><th>宏光MINIEV 第五代</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td class="name">车门</td><td>2 门</td><td>4 门</td><td><span class="yes">明显升级</span></td></tr>
+          <tr><td class="name">轴距</td><td>2000 mm</td><td>2190 mm</td><td><span class="yes">+190mm，后排能用</span></td></tr>
+          <tr><td class="name">车宽</td><td>1648 mm</td><td>1520 mm</td><td><span style="color:#ff8a8a">退步</span></td></tr>
+          <tr><td class="name">快充</td><td>无 / 弱</td><td>35 分钟 30-80%（标配）</td><td><span class="yes">明显升级</span></td></tr>
+          <tr><td class="name">续航</td><td>302 km</td><td>205 / 301 km</td><td>205 版缩水，301 版持平</td></tr>
+          <tr><td class="name">安全气囊</td><td>少</td><td>主副驾双气囊（标配）</td><td><span class="yes">升级</span></td></tr>
+          <tr><td class="name">三电质保</td><td>—</td><td>8 年/12 万公里，首任车主终身</td><td><span class="yes">升级</span></td></tr>
+          <tr><td class="name">保有量与保值</td><td>小众冷门</td><td>累计销量 185 万台以上</td><td><span class="yes">维修便宜、二手好出手</span></td></tr>
+          <tr><td class="name">最高车速</td><td>约 100 km/h</td><td>101 km/h</td><td>都不适合跑高速</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hero" style="margin-top:22px">
+      <div class="big">一句话：<em>花 2 万出头，把一台 2 门冷门微型车，换成 4 门、带快充、有双气囊、保有量 185 万台的主流微型车</em>——而且尺寸几乎没变。</div>
+      <p>这是"新车不能太大"这个前提下性价比最高的一步。唯一要权衡的是：选 205km 省钱但续航缩水，选 301km 多花约 1.2 万但续航不降级。</p>
+    </div>
+  </section>
+
+  <!-- 8 时机 -->
+  <section>
+    <h2><span class="num">8</span>该今年换，还是再等几年？</h2>
+    <p class="lead">这一节不只看补贴，要算的是"等一年到底花掉多少"。</p>
+
+    <div class="hero">
+      <div class="big">关键结论：<em>如果你已经决定要换，越晚换越贵</em>；如果你只是"想换"、车还能用，那继续开反而省钱。</div>
+      <p>因为等待不花钱——<b>只要你真的不换</b>。可一旦最终要换，你等掉的每一分补贴，都远不如旧车残值掉得快。</p>
+    </div>
+
+    <h3>时间账：同一台车，不同时点换的成本</h3>
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>换车时点</th><th>旧车能抵</th><th>政府置换补贴</th><th>购置税</th><th>实际净支出</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(255,176,32,.06)">
+            <td class="name">2026 年（现在）</td>
+            <td class="yes">约 2.0 万</td>
+            <td class="yes">有，约 3,000 元</td>
+            <td class="yes">减半，约 1,700 元</td>
+            <td class="yes">约 2.0–2.3 万</td>
+            <td><span class="pill rec">政策最完整</span> 旧车残值也在最好的位置</td>
+          </tr>
+          <tr>
+            <td class="name">2027 年底前</td>
+            <td>约 1.5 万</td>
+            <td>不确定，大概率延续但力度可能调整</td>
+            <td class="yes">减半，约 1,700 元</td>
+            <td>约 2.5 万</td>
+            <td>购置税减半的最后窗口（政策只到 2027-12-31）</td>
+          </tr>
+          <tr>
+            <td class="name">2029 年及以后</td>
+            <td style="color:#ff8a8a">约 1.0 万或更低</td>
+            <td style="color:#ff8a8a">大概率没有</td>
+            <td style="color:#ff8a8a">全额，约 3,300 元</td>
+            <td style="color:#ff8a8a">约 3.2 万</td>
+            <td>8 年以上微型电车极难出手，残值基本崩塌</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:var(--dim)">
+      假设：以 205km 进阶款为基准；新车价格按"不变或小幅下降"处理；旧车按每年贬值 3,000–5,000 元估算。若新车价格战延续、降幅更大，等待的劣势会缩小一些，但方向不变。
+    </p>
+
+    <h3>所以怎么选，看这三件事</h3>
+    <div class="cards">
+      <div class="card hl">
+        <div class="k">情况一：车已经不好用</div>
+        <div class="v">今年换</div>
+        <div class="n">补贴、旧车残值、购置税优惠三样都在最好的位置。等到明年，三样一起退。</div>
+      </div>
+      <div class="card">
+        <div class="k">情况二：车能用，只是想升级</div>
+        <div class="v">可以等 1–2 年</div>
+        <div class="n">但<b>别超过 2027 年底</b>。等一年的成本约 3,000–5,000 元，换来"晚花钱"和更好的新车，勉强算公平交易。</div>
+      </div>
+      <div class="card">
+        <div class="k">情况三：车况很好，没毛病</div>
+        <div class="v">继续开更省</div>
+        <div class="n">不换就是省下 2 万。<b>别为了 3,000 元补贴去换车</b>——那是本末倒置。</div>
+      </div>
+    </div>
+
+    <h3>出现这 5 个信号，就别再等了</h3>
+    <ol class="steps">
+      <li><b>冬天实际续航掉到 100km 以内</b>——磷酸铁锂电池 5 年后衰减开始明显，这是最硬的换车信号。</li>
+      <li><b>开始频繁进修理厂</b>——微型电车配件不便宜，修两次的钱就够抵掉半年折旧。</li>
+      <li><b>经常因为"2 门"或"没有快充"而不方便</b>——比如要接送人、要跑远一点就得算电量。</li>
+      <li><b>三电质保快到期</b>——科莱威若按常见的 8 年/12 万公里算，你还有约 3 年缓冲；一旦出保，电池维修风险要自己扛。</li>
+      <li><b>本地补贴额度告急</b>——湖北是按月限额、用完即止，资金一旦用完，2026 年就没得申请了。</li>
+    </ol>
+
+    <div class="warn">
+      <div class="t">⚠️ 两条容易被忽略的时间线</div>
+      <p>
+        1. <b>购置税减半只到 2027 年 12 月 31 日</b>（白纸黑字）。2028 年起大概率恢复全额征收，同样的车要多掏约 2,000 元。<br>
+        2. <b>2026 年的以旧换新是"年度政策"</b>，2027 年要重新等文件，力度和门槛都可能变。<b>别把"明年还有"当成理所当然。</b>
+      </p>
+    </div>
+
+    <div class="ok">
+      <div class="t">✓ 一句话总结</div>
+      <p><b>要换就今年内换；不急着换就好好再开一两年，但最晚别拖过 2027 年底。</b>拖到 2029 年以后，你是在用"多花一万"换"晚两年花钱"，不划算。</p>
+    </div>
+  </section>
+
+  <footer>
+    <b>数据来源</b>：上汽通用五菱官网《第五代宏光MINIEV 参数配置》；汽车之家《宏光MINIEV 2026款 第五代 205km 进阶款参数配置表》；汽车之家《各大品牌 9 月限时购车权益汇总》（2026-09-01）；无敌电动网《2026年9月23日宏光MINIEV 全国最新优惠信息汇总》；新浪汽车 9 月各地方报价与导购（2026-09-18 / 09-19 / 09-22 / 09-25）；湖北省商务厅《2026年湖北省汽车以旧换新补贴实施细则》（2026-02-04）；财政部、税务总局、工信部《关于延续和优化新能源汽车车辆购置税减免政策的公告》。<br>
+    <b>说明</b>：车型优惠与政府补贴额度均为实时变动项，厂家 9 月权益为月度限时活动，政府补贴按月限额、用完即止。本报告为购车决策参考，最终金额以经销商报价单和补贴平台审核结果为准，不构成交易建议。<br>
+    整理时间：2026-09-29
+  </footer>
+
+</div>
+</body>
+</html>

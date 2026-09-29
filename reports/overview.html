@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>科莱威 CLEVER 置换换车调研 · 2026年9月</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a20; --panel2:#1c2029; --line:#272c36;
+    --text:#e6e8ec; --muted:#98a2b3; --dim:#6f7987;
+    --blue:#4ea8ff; --amber:#ffb020; --green:#3ddc97; --red:#ff5c5c; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+    padding:48px 24px 96px;
+  }
+  .wrap{max-width:1000px; margin:0 auto;}
+
+  /* header */
+  .kicker{font-size:12px; letter-spacing:.18em; color:var(--blue); text-transform:uppercase; font-weight:600;}
+  h1{font-size:34px; line-height:1.3; margin:10px 0 8px; letter-spacing:-.01em; font-weight:700;}
+  .sub{color:var(--muted); font-size:14px;}
+  .meta{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 12px; background:var(--panel);}
+
+  /* sections */
+  section{margin-top:52px;}
+  h2{font-size:20px; font-weight:700; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  h2 .num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:8px; font-size:13px; font-weight:700;
+    background:rgba(78,168,255,.14); color:var(--blue); flex:none;
+  }
+  h3{font-size:15px; font-weight:650; margin:26px 0 10px; color:#cfd6e0;}
+  p{color:#c3cad6; font-size:14.5px;}
+  .lead{color:var(--muted); font-size:13.5px; margin-bottom:18px;}
+
+  /* callout */
+  .hero{
+    margin-top:28px; background:linear-gradient(135deg,rgba(78,168,255,.10),rgba(167,139,250,.06));
+    border:1px solid rgba(78,168,255,.28); border-radius:16px; padding:26px 28px;
+  }
+  .hero .big{font-size:22px; font-weight:700; line-height:1.5; letter-spacing:-.01em;}
+  .hero .big em{font-style:normal; color:var(--amber);}
+  .hero p{margin-top:12px; font-size:14px; color:#b9c1cd;}
+
+  .warn{
+    margin-top:20px; background:rgba(255,92,92,.08); border:1px solid rgba(255,92,92,.32);
+    border-left:3px solid var(--red); border-radius:10px; padding:16px 20px;
+  }
+  .warn .t{font-weight:700; color:#ff8a8a; font-size:14px; margin-bottom:6px;}
+  .warn p{font-size:13.5px; color:#d5c3c3;}
+
+  .ok{
+    margin-top:20px; background:rgba(61,220,151,.07); border:1px solid rgba(61,220,151,.28);
+    border-left:3px solid var(--green); border-radius:10px; padding:16px 20px;
+  }
+  .ok .t{font-weight:700; color:#6ee7b7; font-size:14px; margin-bottom:6px;}
+  .ok p{font-size:13.5px; color:#c2d8cd;}
+
+  /* cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-top:18px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .card .k{font-size:12px; color:var(--dim); letter-spacing:.04em;}
+  .card .v{font-size:22px; font-weight:700; margin-top:6px; letter-spacing:-.02em;}
+  .card .v small{font-size:13px; font-weight:500; color:var(--muted);}
+  .card .n{font-size:12.5px; color:var(--muted); margin-top:6px; line-height:1.6;}
+
+  /* table */
+  .tblwrap{margin-top:16px; overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel);}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:640px;}
+  th{
+    text-align:left; font-weight:600; font-size:12px; color:var(--muted);
+    letter-spacing:.05em; padding:13px 16px; border-bottom:1px solid var(--line);
+    background:var(--panel2); white-space:nowrap;
+  }
+  td{padding:13px 16px; border-bottom:1px solid rgba(39,44,54,.7); color:#c9d0da; vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:rgba(78,168,255,.045);}
+  td.name{color:#eef1f5; font-weight:600; white-space:nowrap;}
+  td.now{color:var(--dim);}
+  .pill{display:inline-block; font-size:11px; padding:2px 9px; border-radius:999px; font-weight:600; white-space:nowrap;}
+  .pill.rec{background:rgba(255,176,32,.15); color:var(--amber);}
+  .pill.keep{background:rgba(61,220,151,.13); color:var(--green);}
+  .pill.warn2{background:rgba(255,92,92,.13); color:#ff8a8a;}
+  .pill.info{background:rgba(78,168,255,.13); color:var(--blue);}
+  .up{color:var(--green); font-weight:600;}
+  .down{color:var(--red); font-weight:600;}
+
+  /* bar chart */
+  .bars{margin-top:20px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px 24px 14px;}
+  .barrow{display:grid; grid-template-columns:130px 1fr 92px; align-items:center; gap:12px; padding:7px 0;}
+  .barrow .lbl{font-size:13px; color:#c9d0da; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .barrow .lbl.base{color:var(--dim);}
+  .track{height:16px; background:rgba(255,255,255,.045); border-radius:5px; overflow:hidden;}
+  .fill{height:100%; border-radius:5px; background:linear-gradient(90deg,#3d7fd6,#4ea8ff);}
+  .fill.base{background:linear-gradient(90deg,#4a5260,#6b7484);}
+  .fill.amber{background:linear-gradient(90deg,#d98b12,#ffb020);}
+  .fill.green{background:linear-gradient(90deg,#22a06b,#3ddc97);}
+  .fill.purple{background:linear-gradient(90deg,#7c5ce0,#a78bfa);}
+  .barrow .val{font-size:12.5px; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums;}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--dim);}
+  .legend i{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:6px; vertical-align:middle;}
+
+  /* plan */
+  .plan{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px 24px; margin-top:16px;}
+  .plan.top{border-color:rgba(255,176,32,.4); background:linear-gradient(180deg,rgba(255,176,32,.055),rgba(23,26,32,1) 40%);}
+  .plan .head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap;}
+  .plan .head h4{font-size:17px; font-weight:700;}
+  .plan .head .price{font-size:14px; color:var(--amber); font-weight:600;}
+  .plan .why{font-size:13.5px; color:var(--muted); margin-top:8px;}
+  .calc{margin-top:16px; border-top:1px dashed var(--line); padding-top:14px;}
+  .calc .line{display:flex; justify-content:space-between; font-size:13.5px; padding:4px 0; color:#c3cad6;}
+  .calc .line span:last-child{font-variant-numeric:tabular-nums; color:#e6e8ec;}
+  .calc .line.total{border-top:1px solid var(--line); margin-top:8px; padding-top:10px; font-weight:700; font-size:15px;}
+  .calc .line.total span:last-child{color:var(--amber);}
+
+  /* steps */
+  ol.steps{margin-top:16px; counter-reset:s; list-style:none;}
+  ol.steps li{position:relative; padding:0 0 18px 42px; font-size:14px; color:#c3cad6;}
+  ol.steps li::before{
+    counter-increment:s; content:counter(s);
+    position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:50%;
+    background:var(--panel2); border:1px solid var(--line); color:var(--blue);
+    display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;
+  }
+  ol.steps li::after{content:""; position:absolute; left:13px; top:30px; bottom:2px; width:1px; background:var(--line);}
+  ol.steps li:last-child::after{display:none;}
+  ol.steps b{color:#eef1f5;}
+
+  .qa{display:grid; gap:12px; margin-top:16px;}
+  .qa .item{background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--blue); border-radius:10px; padding:14px 18px;}
+  .qa .item .q{font-size:14px; font-weight:600; color:#eef1f5;}
+  .qa .item .a{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  footer{margin-top:64px; padding-top:22px; border-top:1px solid var(--line); font-size:12.5px; color:var(--dim); line-height:1.9;}
+  footer b{color:var(--muted);}
+  @media (max-width:640px){
+    body{padding:32px 16px 72px;}
+    h1{font-size:25px;}
+    .hero .big{font-size:18px;}
+    .barrow{grid-template-columns:92px 1fr 74px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">换车调研 · 2026年9月</div>
+  <h1>开了 5 年的科莱威，换什么车？</h1>
+  <p class="sub">约束条件：新车不能太大 &nbsp;|&nbsp; 参考车型：荣威（上汽）科莱威 CLEVER · 微型纯电 · 3140mm</p>
+  <div class="meta">
+    <span class="tag">2026-09-29 数据</span>
+    <span class="tag">湖北 · 荆门置换政策</span>
+    <span class="tag">9 款候选车型</span>
+  </div>
+
+  <!-- ============ 结论 ============ -->
+  <div class="hero">
+    <div class="big">如果"不能太大"是指<b>别超过 3.8 米</b>——首选 <em>比亚迪海鸥 2026 款</em>（6.99 万起，车长 3.78 米，只比现在这台长 64 厘米）。</div>
+    <p>想再省一点、空间要更大 → <b>五菱缤果 Pro</b>（5.68 万起）。<br>
+       尺寸必须卡死在 3.3 米以内 → <b>长安 Lumin 2026 款</b>（4.69 万起，3.29 米）。<br>
+       要智能座舱和更好的底盘 → <b>吉利星愿</b>（6.48 万起，但车长 4.14 米，已经算"大"了）。</p>
+  </div>
+
+  <div class="warn">
+    <div class="t">⚠️ 时间提醒：置换补贴是按月限额、用完即止</div>
+    <p>湖北 2026 年置换补贴实行"总额控制、逐月安排、均衡使用"，每天额度用完当天就停止受理，资金用完政策即终止。多个地市已进入 9 月收官阶段，<b>部分地市 9 月 30 日后暂停申领</b>。如果你今年内打算换，先打荆门市商务局电话确认本月是否还有额度。</p>
+  </div>
+
+  <!-- ============ 1 现在这台车 ============ -->
+  <section>
+    <h2><span class="num">1</span>你现在这台车，还值多少钱</h2>
+    <p class="lead">2021 年注册的科莱威 CLEVER（302km 版），车龄约 5 年，属于微型纯电里的"小众冷门车"，残值率不高。</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="k">二手车挂牌价</div>
+        <div class="v">2.3–2.6<small> 万</small></div>
+        <div class="n">瓜子 / 懂车帝 / 汽车之家在售同款报价，里程 2.8–4.1 万公里</div>
+      </div>
+      <div class="card">
+        <div class="k">车商实际收车价</div>
+        <div class="v">1.8–2.2<small> 万</small></div>
+        <div class="n">挂牌价到收车价通常再打 8 折左右，冷门车压价更狠</div>
+      </div>
+      <div class="card">
+        <div class="k">5 年贬值幅度</div>
+        <div class="v">约 55<small>%</small></div>
+        <div class="n">新车补贴后约 4.5 万，现在约 2 万</div>
+      </div>
+    </div>
+
+    <div class="ok">
+      <div class="t">✓ 好消息：它仍然值一台"首付"</div>
+      <p>这台车卖出去，基本能覆盖一台 7 万级新车 30% 的车款，再加上置换补贴，你实际要掏的钱会比想象中少。</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 政策 ============ -->
+  <section>
+    <h2><span class="num">2</span>政策：你能拿多少补贴</h2>
+    <p class="lead">2026 年国家以旧换新分"报废更新"和"置换更新"两条路，只能二选一。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>路径</th><th>旧车资格</th><th>你的情况</th><th>补贴标准（买新能源）</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">报废更新</td>
+            <td>新能源旧车须 <b>2019-12-31 前</b>注册</td>
+            <td><span class="pill warn2">不符合</span> 你的车 2021 年注册</td>
+            <td>新车价 12%，封顶 2 万</td>
+          </tr>
+          <tr>
+            <td class="name">置换更新<br><span style="font-weight:400;color:var(--dim);font-size:12px">（卖旧车 + 买新车）</span></td>
+            <td>旧车须 <b>2025-01-08 前</b>登记在本人名下</td>
+            <td><span class="pill keep">符合</span> 你开了 5 年</td>
+            <td><b>新车价 8%，封顶 1.5 万</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>其他能省的钱</h3>
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>项目</th><th>2026 年规则</th><th>对小车的影响</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">新能源购置税</td>
+            <td>2026-01-01 至 2027-12-31 <b>减半征收</b>，每辆减税不超 1.5 万</td>
+            <td>小车都用不满 1.5 万上限，实际就是按"车价 ÷ 1.13 × 10% ÷ 2"交</td>
+          </tr>
+          <tr>
+            <td class="name">经销商优惠</td>
+            <td>可与政府补贴<b>叠加</b></td>
+            <td>但销售常把置换补贴算进"综合优惠"，要单独问裸车价</td>
+          </tr>
+          <tr>
+            <td class="name">新车发票/登记地</td>
+            <td>必须在<b>湖北省</b>开具和办理</td>
+            <td>在荆门本地买、本地上牌即可</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warn">
+      <div class="t">⚠️ 三个容易踩的坑</div>
+      <p>
+        1. <b>报废和置换不能叠加</b>，且一人一年只能享受一次，同一辆新车只能选一项。<br>
+        2. <b>旧车必须走正规过户</b>——要有《二手车销售统一发票》+ 过户登记。私下卖给自己人不过户，拿不到补贴。<br>
+        3. <b>卖旧车和买新车没有先后顺序要求</b>，但所有票据日期都要在 2026-01-01 之后。先买车后卖车、或反过来都行。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 3 尺寸阶梯 ============ -->
+  <section>
+    <h2><span class="num">3</span>先看清"不能太大"到底是多小</h2>
+    <p class="lead">你现在的科莱威车长 3140mm、轴距只有 2000mm，是一台 2 门 4 座的小车。下面按车长排序，看每一档比现在大多少。</p>
+
+    <div class="bars">
+      <div class="barrow">
+        <div class="lbl base">科莱威 CLEVER（现车）</div>
+        <div class="track"><div class="fill base" style="width:73.5%"></div></div>
+        <div class="val">3140 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">五菱宏光MINIEV 5代</div>
+        <div class="track"><div class="fill green" style="width:76.5%"></div></div>
+        <div class="val">3268 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">长安 Lumin 2026款</div>
+        <div class="track"><div class="fill green" style="width:77.1%"></div></div>
+        <div class="val">3293 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">比亚迪海鸥 2026款</div>
+        <div class="track"><div class="fill amber" style="width:88.5%"></div></div>
+        <div class="val">3780 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">五菱缤果 Pro 2026款</div>
+        <div class="track"><div class="fill purple" style="width:94.8%"></div></div>
+        <div class="val">4050 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">吉利星愿</div>
+        <div class="track"><div class="fill purple" style="width:96.8%"></div></div>
+        <div class="val">4135 mm</div>
+      </div>
+      <div class="barrow">
+        <div class="lbl">零跑 A10 / 埃安 UT</div>
+        <div class="track"><div class="fill" style="width:99.9%"></div></div>
+        <div class="val">4270 mm</div>
+      </div>
+      <div class="legend">
+        <span><i style="background:#6b7484"></i>你现在的位置</span>
+        <span><i style="background:#3ddc97"></i>≤3.3m · 与现车同级</span>
+        <span><i style="background:#ffb020"></i>3.8m · 平衡点</span>
+        <span><i style="background:#a78bfa"></i>≥4.0m · 已明显变大</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4 候选车型 ============ -->
+  <section>
+    <h2><span class="num">4</span>候选车型对比（2026 年 9 月行情）</h2>
+    <p class="lead">价格为官方指导价，终端通常还有 2000–10000 元优惠。补贴按"新车价 × 8%"估算，未触 1.5 万上限。</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr>
+            <th>车型</th><th>车长 / 轴距</th><th>指导价</th><th>续航 CLTC</th><th>预计补贴</th><th>点评</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name now">科莱威 CLEVER<br><span style="font-weight:400;font-size:12px">（你现在这台）</span></td>
+            <td class="now">3140 / 2000</td><td class="now">—</td><td class="now">302 km</td><td class="now">—</td>
+            <td class="now">2门4座，上下车不便；配置老、无中控大屏；冬天续航打折明显</td>
+          </tr>
+
+          <tr>
+            <td class="name">长安 Lumin 2026款<br><span style="font-weight:400;font-size:12px;color:var(--dim)">宝藏版</span></td>
+            <td>3293 / 1980</td><td>4.69–6.19 万</td><td>205 / 301 km</td><td>约 3,750 元</td>
+            <td><span class="pill info">尺寸最接近现车</span> 只长 15cm，停车习惯完全不用改；但仍是微型车，升级感有限</td>
+          </tr>
+
+          <tr>
+            <td class="name">五菱宏光MINIEV<br><span style="font-weight:400;font-size:12px;color:var(--dim)">第五代 四门版</span></td>
+            <td>3268 / 2190</td><td>4.48–5.58 万</td><td>205 / 301 km</td><td>约 3,580 元</td>
+            <td>四门版解决了后排上下车问题，轴距比现车长 19cm；最便宜的正经升级</td>
+          </tr>
+
+          <tr>
+            <td class="name">比亚迪海鸥 2026款</td>
+            <td>3780 / 2500</td><td>6.99 万起</td><td>305 / 405 km</td><td>约 5,590 元</td>
+            <td><span class="pill rec">综合首选</span> 五门四座、刀片电池、e平台3.0、热泵空调；售后网点最多，保值率最好</td>
+          </tr>
+
+          <tr>
+            <td class="name">五菱缤果 Pro 2026款</td>
+            <td>4050 / 2560</td><td>5.68 万起</td><td>330 / 403 km</td><td>约 4,540 元</td>
+            <td><span class="pill keep">最省钱的大空间</span> 3C 快充、空间利用率 84.8%、30L 前备厢；品牌溢价弱、售后网点还在铺</td>
+          </tr>
+
+          <tr>
+            <td class="name">吉利（银河）星愿</td>
+            <td>4135 / 2650</td><td>6.48–9.48 万</td><td>310 / 410 km</td><td>约 5,180 元</td>
+            <td>Flyme Auto 智能座舱、底盘调校最稳、标配 6 气囊；<b>车长已 4.14 米</b>，冬季续航衰减偏大</td>
+          </tr>
+
+          <tr>
+            <td class="name">五菱缤果 2025款</td>
+            <td>4265 / 2610</td><td>5.68 万起</td><td>203 / 325 / 430 km</td><td>约 4,540 元</td>
+            <td>空间最实用、维保便宜、后备箱可下沉；三电技术比新势力略旧</td>
+          </tr>
+
+          <tr>
+            <td class="name">零跑 A10</td>
+            <td>4270 / 2605</td><td>6.58–8.68 万</td><td>最高 505 km</td><td>约 5,260 元</td>
+            <td>小型 SUV 坐姿、8155 芯片、顶配带激光雷达；<b>尺寸已经是这几台里最大的</b></td>
+          </tr>
+
+          <tr>
+            <td class="name">埃安 UT<br><span style="font-weight:400;font-size:12px;color:var(--dim)">530 宁德版</span></td>
+            <td>约 4270 / 2750</td><td>8.58 万<br><span style="font-size:12px;color:var(--dim)">限时一口价</span></td><td>530 km</td><td>约 6,860 元</td>
+            <td>轴距最长、续航最长、后排最宽敞；但车最大、价格也最高，与"不能太大"冲突</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 5 三套方案 ============ -->
+  <section>
+    <h2><span class="num">5</span>三套方案，账怎么算</h2>
+    <p class="lead">以下按"旧车卖 2 万（车商价）"估算，实际以你车况和里程为准。</p>
+
+    <!-- 方案 A -->
+    <div class="plan top">
+      <div class="head">
+        <h4>方案 A · 比亚迪海鸥 2026 款 <span class="pill rec">推荐</span></h4>
+        <div class="price">6.99 万起 · 车长 3.78m</div>
+      </div>
+      <div class="why">理由：从 2 门变 5 门、从 3.1 米变 3.78 米，日常停车和窄路几乎没差别，但上下车、后排、安全性、售后网络是全面换代。二手保值率也是这一档里最好的。</div>
+      <div class="calc">
+        <div class="line"><span>新车开票价</span><span>+69,900</span></div>
+        <div class="line"><span>购置税（减半后）</span><span>+3,093</span></div>
+        <div class="line"><span>保险（首年）</span><span>+4,500</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>置换补贴（车价 8%）</span><span class="up">−5,592</span></div>
+        <div class="line"><span>旧车卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 52,400 元</span></div>
+      </div>
+    </div>
+
+    <!-- 方案 B -->
+    <div class="plan">
+      <div class="head">
+        <h4>方案 B · 五菱缤果 Pro 2026 款</h4>
+        <div class="price">5.68 万起 · 车长 4.05m</div>
+      </div>
+      <div class="why">理由：同样的钱买到最大的空间和 3C 快充。如果你平时要装东西、接送人，这台比海鸥更实用。代价是比现车长 91cm，老旧小区窄车位要多试两次。</div>
+      <div class="calc">
+        <div class="line"><span>新车开票价（按 6.5 万中配估）</span><span>+65,000</span></div>
+        <div class="line"><span>购置税（减半后）</span><span>+2,876</span></div>
+        <div class="line"><span>保险（首年）</span><span>+4,300</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>置换补贴（车价 8%）</span><span class="up">−5,200</span></div>
+        <div class="line"><span>旧车卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 47,500 元</span></div>
+      </div>
+    </div>
+
+    <!-- 方案 C -->
+    <div class="plan">
+      <div class="head">
+        <h4>方案 C · 长安 Lumin 2026 款 宝藏版</h4>
+        <div class="price">4.69 万起 · 车长 3.29m</div>
+      </div>
+      <div class="why">理由：只在"尺寸绝对不能变大"的前提下选它。只比现车长 15cm，停车习惯完全不变，但依然是微型车——没有快充（低配）、空间没本质提升，属于"同级别换新"。</div>
+      <div class="calc">
+        <div class="line"><span>新车开票价（按 5.7 万中高配估）</span><span>+57,000</span></div>
+        <div class="line"><span>购置税（减半后）</span><span>+2,522</span></div>
+        <div class="line"><span>保险（首年）</span><span>+3,900</span></div>
+        <div class="line"><span>上牌等杂费</span><span>+500</span></div>
+        <div class="line"><span>置换补贴（车价 8%）</span><span class="up">−4,560</span></div>
+        <div class="line"><span>旧车卖出</span><span class="up">−20,000</span></div>
+        <div class="line total"><span>实际净支出</span><span>约 39,400 元</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 行动清单 ============ -->
+  <section>
+    <h2><span class="num">6</span>落地行动清单</h2>
+    <ol class="steps">
+      <li><b>先确认补贴额度</b>——打荆门市商务局电话或上"湖北省汽车置换更新服务平台"，问清楚本月/本周是否还有额度、截止时间。这一步不确认，后面都白算。</li>
+      <li><b>给旧车做独立估价</b>——去瓜子/懂车帝线上估价，再找 2–3 家二手车商实车评估，拿到书面报价。不要一开始就告诉 4S 店你要置换。</li>
+      <li><b>去 4S 店只谈裸车价</b>——把置换、补贴、金融全部剥离出去，先砍到最低裸车价，再单独谈置换。销售给的"综合优惠 1 万"里往往已经含了政府补贴。</li>
+      <li><b>对比落地价而非裸车价</b>——至少问 3 家店（荆门本地 + 武汉），把购置税、保险、上牌、赠品全部算进"落地价"再比。</li>
+      <li><b>确认提车周期</b>——热门小车（海鸥、缤果 Pro）常有 2–6 周等车期，要卡在补贴有效期内完成开票和上牌。</li>
+      <li><b>旧车正规过户</b>——必须拿到《二手车销售统一发票》+ 过户后的登记证书，这是申请补贴的硬材料。</li>
+      <li><b>上平台提交申请</b>——"湖北省汽车置换更新服务平台"提交，3 个工作日受理、15 个工作日审核、30 个工作日到账。</li>
+    </ol>
+  </section>
+
+  <!-- ============ 7 需要确认 ============ -->
+  <section>
+    <h2><span class="num">7</span>还需要你确认三件事</h2>
+    <p class="lead">这三点直接决定推荐结论，你告诉我我就能把方案收窄到一台。</p>
+    <div class="qa">
+      <div class="item">
+        <div class="q">① 预算上限是多少？</div>
+        <div class="a">本报告按 4–9 万区间铺开。如果能到 10 万，可选项会多很多（海豚、埃安 UT、零跑 A10 顶配）。</div>
+      </div>
+      <div class="item">
+        <div class="q">② "不能太大"是硬性限制，还是只是偏好？</div>
+        <div class="a">如果是老小区窄车位 / 家里只有这一个车位，那 3.3 米以内才是安全线；如果只是"不想开大车"，那 3.8–4.1 米完全没问题。</div>
+      </div>
+      <div class="item">
+        <div class="q">③ 家里有固定充电桩吗？主要用途是什么？</div>
+        <div class="a">有家充 → 205km 版本够用，能省下 1 万多；只能靠公共快充 → 必须上 300km+ 且带快充的版本，选车逻辑完全不同。</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>数据来源</b>：湖北省商务厅《2026年湖北省汽车以旧换新补贴实施细则》（2026-02-04）；商务部等 8 部门《2026年汽车以旧换新补贴实施细则》；瓜子二手车 / 懂车帝 / 汽车之家在售科莱威 CLEVER 报价；汽车之家 / 中关村在线 / 易车 / 太平洋汽车 2026 年 9 月各车型行情；长安、五菱、比亚迪、吉利、零跑官方指导价。<br>
+    <b>说明</b>：车型价格与优惠随车企调价、车展活动实时变动，实际成交价以当地经销商报价为准；补贴资金按月限额、用完即止，申请前请务必核实当月额度。本报告为购车决策参考，不构成交易建议。<br>
+    整理时间：2026-09-29
+  </footer>
+
+</div>
+</body>
+</html>
